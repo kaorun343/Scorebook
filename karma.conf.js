@@ -46,7 +46,6 @@ module.exports = function(config) {
       module: {
         loaders: [
           { test: /\.ts$/, loader: "ts-loader" },
-          // { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ }
         ]
       }
     },
