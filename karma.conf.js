@@ -15,7 +15,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'src/**.spec.js'
+      'src/**/*.spec.ts'
     ],
 
 
@@ -27,18 +27,16 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'src/**.spec.js': ['babel', 'webpack']
+      'src/**/*.spec.ts': ['webpack']
     },
 
     plugins: [
-      require('karma-typescript-preprocessor'),
-      require('karma-babel-preprocessor'),
+      require('karma-webpack'),
       require('karma-mocha'),
       require('karma-chai'),
       require('karma-sinon'),
       require('karma-mocha-reporter'),
-      require("karma-chrome-launcher"),
-      require('karma-webpack')
+      require("karma-chrome-launcher")
     ],
 
     webpack: {
@@ -48,7 +46,7 @@ module.exports = function(config) {
       module: {
         loaders: [
           { test: /\.ts$/, loader: "ts-loader" },
-          { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ }
+          // { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ }
         ]
       }
     },

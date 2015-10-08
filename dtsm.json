@@ -24,6 +24,15 @@
     },
     "github-electron/github-electron.d.ts": {
       "ref": "66f88ec51858bb21bc375fa91a963c04bc09401e"
+    },
+    "mocha/mocha.d.ts": {
+      "ref": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
+    },
+    "chai/chai.d.ts": {
+      "ref": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
+    },
+    "sinon/sinon.d.ts": {
+      "ref": "d6c98baa7fd703e449cf37f3ec39ed3bd92cfd35"
     }
   }
 }

@@ -22,12 +22,16 @@
     "compileOnSave": false,
     "files": [
         "./src/app.ts",
+        "./src/components/decorators/decorators.spec.ts",
         "./src/components/decorators/decorators.ts",
         "./typings/bundle.d.ts",
+        "./typings/chai/chai-2.0.0.d.ts",
         "./typings/es6-promise/es6-promise.d.ts",
         "./typings/github-electron/github-electron-main.d.ts",
         "./typings/github-electron/github-electron.d.ts",
+        "./typings/mocha/mocha.d.ts",
         "./typings/node/node.d.ts",
+        "./typings/sinon/sinon.d.ts",
         "./typings/vue/vue.d.ts"
     ]
 }
