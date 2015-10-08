@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "isolatedModules": false,
+        "jsx": "react",
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "declaration": false,
+        "noImplicitAny": true,
+        "removeComments": false,
+        "noLib": false,
+        "preserveConstEnums": true,
+        "suppressImplicitAnyIndexErrors": true
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "./**/*.tsx",
+        "!./node_modules/**/*"
+    ],
+    "compileOnSave": false,
+    "files": [
+        "./src/app.ts",
+        "./src/components/decorators/decorators.ts",
+        "./typings/bundle.d.ts",
+        "./typings/es6-promise/es6-promise.d.ts",
+        "./typings/github-electron/github-electron-main.d.ts",
+        "./typings/github-electron/github-electron.d.ts",
+        "./typings/node/node.d.ts",
+        "./typings/vue/vue.d.ts"
+    ]
+}
