@@ -1,5 +1,6 @@
 // Karma configuration
 // Generated on Tue Oct 06 2015 06:05:03 GMT+0900 (JST)
+var webpack = require('webpack')
 
 module.exports = function(config) {
   config.set({
@@ -10,7 +11,7 @@ module.exports = function(config) {
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha', 'chai'],
+    frameworks: ['mocha', 'chai', 'sinon'],
 
 
     // list of files / patterns to load in the browser
@@ -47,7 +48,12 @@ module.exports = function(config) {
         loaders: [
           { test: /\.ts$/, loader: "ts-loader" },
         ]
-      }
+      },
+      plugins: [
+        new webpack.ProvidePlugin({
+          StoneSkin: 'stone-skin'
+        })
+      ]
     },
 
 

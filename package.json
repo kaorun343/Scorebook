@@ -3,12 +3,12 @@
   "version": "0.0.1",
   "description": "Scorebook Manager",
   "main": "main.js",
+  "private": true,
   "scripts": {
     "test": "karma start",
     "copy": "gulp copy"
   },
   "keywords": [],
-  "private": true,
   "license": "MIT",
   "devDependencies": {
     "chai": "^3.3.0",
@@ -27,9 +27,12 @@
     "webpack": "^1.12.2"
   },
   "dependencies": {
-    "localforage": "^1.2.10",
+    "lodash": "^3.10.1",
     "redux": "^3.0.2",
-    "vue": "^0.12.16",
+    "redux-logger": "^2.0.3",
+    "redux-thunk": "^1.0.0",
+    "stone-skin": "^0.5.2",
+    "vue": "^1.0.0-rc.1",
     "vue-class-component": "^1.0.0",
     "vue-redux": "0.0.1"
   }

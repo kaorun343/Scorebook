@@ -17,21 +17,39 @@
     "filesGlob": [
         "./**/*.ts",
         "./**/*.tsx",
-        "!./node_modules/**/*"
+        "!./node_modules/typescript/**/*"
     ],
     "compileOnSave": false,
     "files": [
-        "./src/app.ts",
-        "./src/components/decorators/decorators.spec.ts",
-        "./src/components/decorators/decorators.ts",
-        "./typings/bundle.d.ts",
-        "./typings/chai/chai-2.0.0.d.ts",
-        "./typings/es6-promise/es6-promise.d.ts",
-        "./typings/github-electron/github-electron-main.d.ts",
-        "./typings/github-electron/github-electron.d.ts",
-        "./typings/mocha/mocha.d.ts",
-        "./typings/node/node.d.ts",
-        "./typings/sinon/sinon.d.ts",
-        "./typings/vue/vue.d.ts"
-    ]
+        "node_modules/stone-skin/index.d.ts",
+        "node_modules/stone-skin/node_modules/idb-wrapper-promisify/idb-wrapper-promisify.d.ts",
+        "src/actions/ActionType.ts",
+        "src/actions/index.ts",
+        "src/actions/song.spec.ts",
+        "src/actions/song.ts",
+        "src/actions/songs.spec.ts",
+        "src/actions/songs.ts",
+        "src/app.ts",
+        "src/components/decorators/decorators.spec.ts",
+        "src/components/decorators/decorators.ts",
+        "src/models/song.spec.ts",
+        "src/models/song.ts",
+        "src/reducers/index.ts",
+        "src/reducers/song.ts",
+        "src/reducers/songs.ts",
+        "src/states/songs.ts",
+        "src/stores/configureStore.ts",
+        "typings/bundle.d.ts",
+        "typings/chai/chai.d.ts",
+        "typings/es6-promise/es6-promise.d.ts",
+        "typings/github-electron/github-electron-main.d.ts",
+        "typings/github-electron/github-electron.d.ts",
+        "typings/lodash/lodash.d.ts",
+        "typings/mocha/mocha.d.ts",
+        "typings/node/node.d.ts",
+        "typings/redux-thunk/redux-thunk.d.ts",
+        "typings/redux/redux.d.ts",
+        "typings/sinon/sinon.d.ts"
+    ],
+    "exclude": []
 }
