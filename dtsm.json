@@ -42,6 +42,9 @@
     },
     "redux-thunk/redux-thunk.d.ts": {
       "ref": "3fc1377ce29dd9670975cb68615edf1b819fc4a5"
+    },
+    "vue/vue.d.ts": {
+      "ref": "af5b8275d1f2b92738b93fddabc461fc20c553a1"
     }
   }
 }

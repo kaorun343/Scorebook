@@ -17,12 +17,12 @@
     "filesGlob": [
         "./**/*.ts",
         "./**/*.tsx",
-        "!./node_modules/typescript/**/*"
+        "!./node_modules/typescript/**/*",
+        "!./node_modules/stone-skin/node_modules/idb-wrapper-promisify/idb-wrapper-promisify.d.ts"
     ],
     "compileOnSave": false,
     "files": [
         "node_modules/stone-skin/index.d.ts",
-        "node_modules/stone-skin/node_modules/idb-wrapper-promisify/idb-wrapper-promisify.d.ts",
         "src/actions/ActionType.ts",
         "src/actions/index.ts",
         "src/actions/song.spec.ts",
@@ -49,7 +49,8 @@
         "typings/node/node.d.ts",
         "typings/redux-thunk/redux-thunk.d.ts",
         "typings/redux/redux.d.ts",
-        "typings/sinon/sinon.d.ts"
+        "typings/sinon/sinon.d.ts",
+        "typings/vue/vue.d.ts"
     ],
     "exclude": []
 }
