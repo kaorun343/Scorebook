@@ -11,6 +11,7 @@
   "devDependencies": {
     "chai": "^3.3.0",
     "dotenv": "^1.2.0",
+    "html-loader": "^0.3.0",
     "karma": "^0.13.10",
     "karma-chai": "^0.1.0",
     "karma-chrome-launcher": "^0.2.0",
@@ -28,6 +29,7 @@
     "parse": "^1.6.7",
     "underscore": "^1.8.3",
     "vue": "^1.0.0",
-    "vue-class-component": "^1.0.0"
+    "vue-class-component": "^1.0.0",
+    "vue-router": "^0.7.5"
   }
 }

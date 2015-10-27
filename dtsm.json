@@ -30,6 +30,9 @@
     },
     "parse/parse.d.ts": {
       "ref": "35ba1a07e1ddafef621636fc8d0714f6f70ca479"
+    },
+    "es6-promise/es6-promise.d.ts": {
+      "ref": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
     }
   }
 }
