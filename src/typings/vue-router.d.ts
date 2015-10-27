@@ -1,8 +1,8 @@
 declare namespace VueRouter {
 
   interface Transition {
-    from: Router
-    to: Router
+    from: $route<any, any>
+    to: $route<any, any>
     next(): void
     abort(reason?: any): void
     redirect(path: string): void
