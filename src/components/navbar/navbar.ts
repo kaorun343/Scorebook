@@ -1,6 +1,5 @@
 "use strict"
 import component = require('vue-class-component')
-import { prop, watch } from '../../decorators/decorators'
 
 @component
 export class Navbar {
@@ -8,5 +7,4 @@ export class Navbar {
 
   public active: string = "/"
 
-  private $route: VueRouter.$route<any, any>
 }
