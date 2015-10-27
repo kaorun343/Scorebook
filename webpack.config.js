@@ -1,4 +1,5 @@
 var webpack = require('webpack')
+require('dotenv').load()
 
 module.exports = {
   entry: "./src/app.ts",
@@ -13,5 +14,11 @@ module.exports = {
       { test: /\.ts$/, loader: "ts-loader" },
       { test: /\.js$/, loader: "babel-loader", exclude: /node_modules/ }
     ]
-  }
+  },
+  plugins: [
+    new webpack.DefinePlugin({
+      APPLICATION_ID: `"${process.env.APPLICATION_ID}"`,
+      JAVASCRIPT_KEY: `"${process.env.JAVASCRIPT_KEY}"`
+    })
+  ]
 }

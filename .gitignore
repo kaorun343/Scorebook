@@ -2,3 +2,4 @@
 /typings
 /public**js
 /.parse.*
+.env

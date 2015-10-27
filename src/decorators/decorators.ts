@@ -30,62 +30,11 @@ export function prop(options: PropOption): PropertyDecorator {
 
 /**
  * decorator of a watch function
- * @param  {Function}          onChange [description]
- * @return {PropertyDecorator}          [description]
+ * @param  {string}            path [description]
+ * @return {PropertyDecorator}      [description]
  */
-export function watch<T>(onChange: (value: T, oldValue: T) => void): PropertyDecorator {
+export function watch(path: string): PropertyDecorator {
   return function(target: any, propertyKey: string) {
-    (target.constructor.watch || (target.constructor.watch = {}))[propertyKey] = onChange
-  }
-}
-
-/**
- * decorator of a component
- * @param  {string}         componentName [description]
- * @param  {any}            Component     [description]
- * @return {ClassDecorator}               [description]
- */
-export function Component(componentName: string, Component: any): ClassDecorator {
-  return function(Target: any) {
-    (Target.components || (Target.components = {}))[componentName] = Component
-  }
-}
-
-/**
- * decorator of a filter
- * @param  {string}         filterName [description]
- * @param  {any}            filter     [description]
- * @return {ClassDecorator}            [description]
- */
-export function Filter(filterName: string, filter: any): ClassDecorator {
- return function(Target: any) {
-   (Target.filters || (Target.filters = {}))[filterName] = filter
- }
-}
-
-
-/**
- * decorator of a mixin
- * @param  {any}            Mixin [description]
- * @return {ClassDecorator}       [description]
- */
-export function Mixin(Mixin: any): ClassDecorator {
-  return function(Target: {mixins: any[]}) {
-    if (!Target.mixins) {
-      Target.mixins = []
-    }
-    Target.mixins.push(Mixin)
-  }
-}
-
-/**
- * decorator of a partial
- * @param  {string}         partialName [description]
- * @param  {string}         partial     [description]
- * @return {ClassDecorator}             [description]
- */
-export function Partial(partialName: string, partial: string): ClassDecorator {
-  return function(Target: any) {
-    (Target.partials || (Target.partials = {}))[partialName] = partial
+    (target.constructor.watch || (target.constructor.watch = {}))[path] = propertyKey
   }
 }

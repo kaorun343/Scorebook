@@ -1,6 +1,11 @@
 import Vue = require('vue')
-var VueComponent = require('vue-class-component')
+import component = require('vue-class-component')
 
-const app = new Vue({
-  el: '#app'
-})
+// Parse.initialize(APPLICATION_ID, JAVASCRIPT_KEY)
+
+@component
+class App {
+  static el = '#app'
+}
+
+const app = new App()
