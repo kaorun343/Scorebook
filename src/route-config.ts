@@ -1,13 +1,19 @@
+"use strict"
+import { Album } from './components/album/album'
+import { Albums } from "./components/albums/albums"
+
 export function configureRouter(router: VueRouter.Router) {
   router.map({
     "/": {
       component: { template: "<div>top page</div>" }
     },
-    "/albums": {
-      component: { template: "<div>albums</div>" }
+    "/albums/:year": {
+      name: "albums",
+      component: Albums
     },
-    "/albums/:id": {
-      component: { template: "<div>an album</div>" }
+    "/albums/:year/:month": {
+      name: "album",
+      component: Album
     },
     "/songs": {
       component: { template: "<div>songs and search bar</div>" }
@@ -18,5 +24,9 @@ export function configureRouter(router: VueRouter.Router) {
     "/settings": {
       component: { template: "<div>settings</div>" }
     }
+  })
+
+  router.redirect({
+    "/albums": `/albums/${(new Date).getFullYear()}`
   })
 }

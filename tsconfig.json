@@ -22,6 +22,9 @@
     "compileOnSave": false,
     "files": [
         "src/app.ts",
+        "src/components/album/album.ts",
+        "src/components/albums/albums.ts",
+        "src/components/albums/pagination.ts",
         "src/components/navbar/navbar.ts",
         "src/decorators/decorators.spec.ts",
         "src/decorators/decorators.ts",

@@ -3,7 +3,7 @@ declare namespace VueRouter {
   interface Transition {
     from: $route<any, any>
     to: $route<any, any>
-    next(): void
+    next(data?: any): void
     abort(reason?: any): void
     redirect(path: string): void
   }
@@ -32,7 +32,7 @@ declare namespace VueRouter {
     stop(): void
     map(routeMap: Object): void
     on(path: string, config: Object): void
-    go(path: string): void
+    go(path: string | Object): void
     replace(path: string): void
     redirect(redirectMap: Object): void
     alias(aliasMap: Object): void

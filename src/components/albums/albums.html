@@ -1,0 +1,13 @@
+<div>
+  <h1>アルバム一覧</h1>
+
+  <pagination :year="year"></pagination>
+
+  <div class="list-group">
+    <a v-for="month in 12" v-link="{name: 'album', params: {year: year, month: month+1}}" class="list-group-item">
+      月刊エレクトーン{{year}}年{{month+1}}月号
+    </a>
+  </div>
+
+  <pagination :year="year"></pagination>
+</div>
