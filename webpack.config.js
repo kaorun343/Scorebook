@@ -2,7 +2,7 @@ var webpack = require('webpack')
 require('dotenv').load()
 
 module.exports = {
-  entry: "./src/app.ts",
+  entry: "./src/index.ts",
   output: {
     filename: "./public/app.js"
   },

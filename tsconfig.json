@@ -28,6 +28,7 @@
         "src/components/navbar/navbar.ts",
         "src/decorators/decorators.spec.ts",
         "src/decorators/decorators.ts",
+        "src/index.ts",
         "src/models/song.spec.ts",
         "src/models/song.ts",
         "src/route-config.ts",

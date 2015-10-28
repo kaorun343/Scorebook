@@ -1,10 +1,12 @@
 "use strict"
 import component = require('vue-class-component')
+import { prop } from '../../decorators/decorators'
 
 @component
 export class Navbar {
   static template = require('./navbar.html')
 
-  public active: string = "/"
+  @prop({type: String, default: "/"})
+  public active: string
 
 }

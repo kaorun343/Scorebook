@@ -1,4 +1,5 @@
 "use strict"
+import { App } from './app'
 import { Album } from './components/album/album'
 import { Albums } from "./components/albums/albums"
 
@@ -28,5 +29,11 @@ export function configureRouter(router: VueRouter.Router) {
 
   router.redirect({
     "/albums": `/albums/${(new Date).getFullYear()}`
+  })
+
+  router.afterEach((transition) => {
+    var path = transition.to.path.split("/")[1]
+    var app = <App>router.app
+    app.active = path
   })
 }
