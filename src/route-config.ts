@@ -1,7 +1,8 @@
 "use strict"
 import { App } from './app'
 import { Album } from './components/album/album'
-import { Albums } from "./components/albums/albums"
+import { Albums } from './components/albums/albums'
+import { Create } from './components/create/create'
 
 export function configureRouter(router: VueRouter.Router) {
   router.map({
@@ -15,6 +16,9 @@ export function configureRouter(router: VueRouter.Router) {
     "/albums/:year/:month": {
       name: "album",
       component: Album
+    },
+    "/create": {
+      component: Create
     },
     "/songs": {
       component: { template: "<div>songs and search bar</div>" }
