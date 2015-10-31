@@ -4,7 +4,7 @@ import { App } from '../../app'
 import { Pagination } from './pagination'
 
 interface Params {
-  year: number
+  year: string
 }
 
 @component

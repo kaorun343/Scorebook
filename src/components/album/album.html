@@ -1,0 +1,29 @@
+<div>
+  <a v-link="{name: 'albums', params: {year: year}}">アルバム一覧に戻る</a>
+  <h1>月刊エレクトーン{{year}}年{{month}}月号</h1>
+  <a class="btn btn-primary" v-link="{name: 'create', query: {year: year, month: month}}">{{year}}年{{month}}月号の曲を追加</a>
+  <a class="btn btn-secondary" id="addSong" :href="href" target="_blank">ヤマハのサイトを表示（外部サイト）</a>
+  <hr>
+  <div class="list-group">
+    <a class="list-group-item" v-link="{name: 'song', params: {id: 1}}">Lorem ipsum dolor.</a>
+    <a class="list-group-item" v-link="{name: 'song', params: {id: 1}}">Soluta, adipisci, mollitia?</a>
+    <a class="list-group-item" v-link="{name: 'song', params: {id: 1}}">Sapiente, ducimus, doloribus?</a>
+    <a class="list-group-item" v-link="{name: 'song', params: {id: 1}}">Veritatis, nobis, ipsa!</a>
+    <a class="list-group-item" v-link="{name: 'song', params: {id: 1}}">Quisquam, reiciendis, aliquam!</a>
+  </div>
+
+  <nav>
+    <div class="pager">
+      <li class="pager-prev">
+        <a v-link="{name: 'album', params: {year: previousYear, month: previousMonth}}">
+          {{previousYear}}年{{previousMonth}}月号
+        </a>
+      </li>
+      <li class="pager-next">
+        <a v-link="{name: 'album', params: {year: nextYear, month: nextMonth}}">
+          {{nextYear}}年{{nextMonth}}月号
+        </a>
+      </li>
+    </div>
+  </nav>
+</div>

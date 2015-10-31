@@ -18,12 +18,14 @@ export function configureRouter(router: VueRouter.Router<App>) {
       component: Album
     },
     "/create": {
+      name: "create",
       component: Create
     },
     "/songs": {
       component: { template: "<div>songs and search bar</div>" }
     },
     "/songs/:id": {
+      name: "song",
       component: { template: "<div>a song</div>" }
     },
     "/settings": {
