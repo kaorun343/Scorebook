@@ -9,6 +9,4 @@ interface Params {
 @component
 export class Album {
   static template = "<div>album: {{$route.params.year}}年{{$route.params.month}}月号</div>"
-
-  $route: VueRouter.$route<Params, any>
 }

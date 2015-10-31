@@ -2,6 +2,7 @@
 import component = require('vue-class-component')
 import { watch } from '../../decorators/decorators'
 import { grades, types } from '../../constants/constants'
+import { App } from '../../app'
 
 interface Query {
   year: number
@@ -92,13 +93,13 @@ export class Create {
   }
 
   static route = {
-    data: function(transition: VueRouter.Transition) {
-      var query: Query = transition.to.query
+    data: function(transition: VueRouter.Transition<App, any, any, any, Query>) {
+      var { query: {year, month} } = transition.to
       var date = new Date
       setTimeout(() => {
         transition.next({
-          'song.year': query.year || date.getFullYear(),
-          'song.month': query.month || date.getMonth() + 1
+          'song.year': year || date.getFullYear(),
+          'song.month': month || date.getMonth() + 1
         })
       }, 0)
     }

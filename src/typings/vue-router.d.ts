@@ -1,8 +1,8 @@
 declare namespace VueRouter {
 
-  interface Transition {
-    from: $route<any, any>
-    to: $route<any, any>
+  interface Transition<RootVueApp, FromParams, FromQuery, ToParams, ToQuery> {
+    from: $route<RootVueApp, FromParams, FromQuery>
+    to: $route<RootVueApp, ToParams, ToQuery>
     next(data?: any): void
     abort(reason?: any): void
     redirect(path: string): void
@@ -20,12 +20,12 @@ declare namespace VueRouter {
   }
 
   interface RouterStatic {
-    new(option?: RouterOption): Router
+    new<RootVueApp>(option?: RouterOption): Router<RootVueApp>
   }
 
-  interface Router {
+  interface Router<RootVueApp> {
 
-    app: any
+    app: RootVueApp
     mode: string
 
     start(App: Function | Object, el: string | Element): void
@@ -36,19 +36,19 @@ declare namespace VueRouter {
     replace(path: string): void
     redirect(redirectMap: Object): void
     alias(aliasMap: Object): void
-    beforeEach(hook: (transition: Transition) => Promise<any> | any): void
-    afterEach(hook: (transition: Transition) => Promise<any> | any): void
+    beforeEach<FP, FQ, TP, TQ>(hook: (transition: Transition<RootVueApp, FP, FQ, TP, TQ>) => any): void
+    afterEach<FP, FQ, TP, TQ>(hook: (transition: Transition<RootVueApp, FP, FQ, TP, TQ>) => any): void
   }
 
-  interface $route<Params, Query> {
+  interface $route<RootVueApp, Params, Query> {
     path: string
     params: Params
     query: Query
-    router: Router
+    router: Router<RootVueApp>
   }
 }
 
 declare module "vue-router" {
-  var static: VueRouter.RouterStatic
-  export = static
+  var Constructor: VueRouter.RouterStatic
+  export = Constructor
 }

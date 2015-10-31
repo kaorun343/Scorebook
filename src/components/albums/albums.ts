@@ -1,5 +1,6 @@
 "use strict"
 import component = require('vue-class-component')
+import { App } from '../../app'
 import { Pagination } from './pagination'
 
 interface Params {
@@ -13,14 +14,12 @@ export class Albums {
 
   year: number = (new Date).getFullYear()
 
-  $route: VueRouter.$route<Params, any>
-
   static route = {
-    data: function(transition: VueRouter.Transition) {
-      var route: Params = transition.to.params
+    data: function(transition: VueRouter.Transition<App, any, any, Params, any>) {
+      var { year } = transition.to.params
       setTimeout(() => {
         transition.next({
-          year: Number(route.year)
+          year: Number(year)
         })
       }, 0)
     }

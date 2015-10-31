@@ -8,7 +8,7 @@ import { configureRouter } from './route-config'
 
 Vue.use(VueRouter)
 
-const router = new VueRouter()
+const router = new VueRouter<App>()
 configureRouter(router)
 
 router.start(App, '#app')

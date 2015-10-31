@@ -4,7 +4,7 @@ import { Album } from './components/album/album'
 import { Albums } from './components/albums/albums'
 import { Create } from './components/create/create'
 
-export function configureRouter(router: VueRouter.Router) {
+export function configureRouter(router: VueRouter.Router<App>) {
   router.map({
     "/": {
       component: { template: "<div>top page</div>" }
@@ -36,8 +36,6 @@ export function configureRouter(router: VueRouter.Router) {
   })
 
   router.afterEach((transition) => {
-    var path = transition.to.path.split("/")[1]
-    var app = <App>router.app
-    app.active = path
+    router.app.active = transition.to.path.split("/")[1]
   })
 }
