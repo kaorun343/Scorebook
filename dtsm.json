@@ -33,6 +33,9 @@
     },
     "es6-promise/es6-promise.d.ts": {
       "ref": "62eedc3121a5e28c50473d2e4a9cefbcb9c3957f"
+    },
+    "twitter/twitter.d.ts": {
+      "ref": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     }
   }
 }

@@ -1,0 +1,59 @@
+<div>
+  <a v-link="{path: previousPath}">戻る</a>
+  <h1 v-text="song.title"></h1>
+  <div class="lead" v-text="song.lead"></div>
+
+  <div v-el:twitter></div>
+  <div>
+    <a v-link="{name: 'edit', params: {id: '30'}}">内容を編集する</a>
+  </div>
+  <hr>
+  <section>
+    <h2>基本情報</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <th scope="1">アーティスト</th><td v-text="song.artist"></td>
+        </tr>
+        <tr>
+          <th scope="2">収録アルバム</th><td>月刊エレクトーン{{song.year}}年{{song.month}}月号</td>
+        </tr>
+        <tr>
+          <th scope="3">掲載ページ</th><td>{{song.page}}ページ</td>
+        </tr>
+        <tr>
+          <th scope="4">種類</th><td v-text="song.type"></td>
+        </tr>
+        <tr>
+          <th scope="5">難易度</th><td v-text="song.grade"></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <hr>
+  <section>
+    <h2>パート情報</h2>
+    <table class="table">
+      <thead>
+        <tr><th>種類</th><th>上鍵盤</th><th>下鍵盤</th><th>ペダル鍵盤</th><th>リズム</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>エレクトーン</td><td>あり</td><td>あり</td><td>あり</td><td>あり</td>
+        </tr>
+          <tr>
+            <td>エレクトーン</td><td>あり</td><td>あり</td><td>あり</td><td>あり</td>
+          </tr>
+      </tbody>
+    </table>
+  </section>
+  <hr>
+  <section>
+    <h2>関連動画</h2>
+    <div class="list-group">
+      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
+      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
+      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
+    </div>
+  </section>
+</div>

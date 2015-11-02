@@ -1,8 +1,14 @@
 "use strict";
+import { Song } from '../data/song'
 import { PartObject } from './part'
 import { VideoObject } from './video'
 
-export class SongObject extends Parse.Object {
+export class SongObject extends Parse.Object implements Song {
+
+  static get(id: string) {
+    const query = new Parse.Query(SongObject)
+    return query.get(id)
+  }
 
   constructor(options?: any) {
     super(options)
