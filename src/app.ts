@@ -8,5 +8,11 @@ export class App {
   static template = require('./app.html')
   static components = { Navbar }
 
-  active = ""
+  active: string
+
+  private data() {
+    return {
+      active: ""
+    }
+  }
 }

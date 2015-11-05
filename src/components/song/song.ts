@@ -4,6 +4,8 @@ import { SongObject } from '../../objects/song'
 import { PartObject } from '../../objects/part'
 import { VideoObject } from '../../objects/video'
 import { Song as SongData } from '../../data/song'
+import { Part as PartData } from '../../data/part'
+import { Video as VideoData } from '../../data/video'
 
 interface Params {
   id: string
@@ -13,21 +15,25 @@ interface Params {
 export class Song {
   static template = require('./song.html')
 
-  song: SongData = {
-    title: "",
-    lead: "",
-    artist: "",
-    year: 0,
-    month: 0,
-    page: 0,
-    type: "",
-    grade: ""
+  song: SongData
+  parts: PartData[]
+  videos: VideoData[]
+
+  previousPath: string
+
+  private data(): {
+    song: SongData
+    parts: PartData[]
+    videos: VideoData[]
+    previousPath: string
+  } {
+    return {
+      song: new SongData,
+      parts: [],
+      videos: [],
+      previousPath: ""
+    }
   }
-
-  parts: any[] = []
-  videos: any[] = []
-
-  previousPath = ""
 
   $els: {
     twitter: HTMLElement

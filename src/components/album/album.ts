@@ -7,14 +7,20 @@ interface Params {
   month: string
 }
 
-var date = new Date
-
 @component
 export class Album {
   static template = require('./album.html')
 
-  year: number = date.getFullYear()
-  month: number = date.getMonth() + 1
+  year: number
+  month: number
+
+  private data() {
+    const date = new Date
+    return {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1
+    }
+  }
 
   get href(): string {
     return `http://www.ymm.co.jp/magazine/electone/${this.year*100+this.month}.php`

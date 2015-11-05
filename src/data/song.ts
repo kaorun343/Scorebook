@@ -1,4 +1,7 @@
-export interface Song {
+"use strict"
+import { grades, types } from '../constants/constants'
+
+export class Song {
   title: string
   lead: string
   artist: string
@@ -7,4 +10,18 @@ export interface Song {
   page: number
   type: string
   grade: string
+
+  constructor() {
+    this.title = ""
+    this.lead = ""
+    this.artist = ""
+
+    const date = new Date
+    this.year = date.getFullYear()
+    this.month = date.getMonth()
+
+    this.page = 0
+    this.type = types[0]
+    this.grade = grades[0]
+  }
 }

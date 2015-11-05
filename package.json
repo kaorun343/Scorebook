@@ -29,7 +29,7 @@
     "parse": "^1.6.7",
     "underscore": "^1.8.3",
     "vue": "^1.0.4",
-    "vue-class-component": "^1.0.0",
+    "vue-class-component": "^2.0.0",
     "vue-router": "^0.7.5"
   }
 }

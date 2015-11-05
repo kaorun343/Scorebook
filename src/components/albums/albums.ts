@@ -12,7 +12,14 @@ export class Albums {
   static template = require('./albums.html')
   static components = { Pagination }
 
-  year: number = (new Date).getFullYear()
+  year: number
+
+  private data() {
+    const date = new Date
+    return {
+      year: date.getFullYear()
+    }
+  }
 
   static route = {
     data: function(transition: VueRouter.Transition<App, any, any, Params, any>) {

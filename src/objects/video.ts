@@ -1,7 +1,8 @@
 "use strict"
 import { SongObject } from './song'
+import { Video } from '../data/video'
 
-export class VideoObject extends Parse.Object {
+export class VideoObject extends Parse.Object implements Video {
 
   constructor(options?: any) {
     super(options)
@@ -15,12 +16,12 @@ export class VideoObject extends Parse.Object {
     this.set("title", value)
   }
 
-  get videoId(): string {
-    return this.get("videoId")
+  get url(): string {
+    return this.get("url")
   }
 
-  set videoId(value: string) {
-    this.set("videoId", value)
+  set url(value: string) {
+    this.set("url", value)
   }
 
   get song(): SongObject {

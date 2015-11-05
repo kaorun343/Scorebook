@@ -1,7 +1,8 @@
 "use strict"
 import { SongObject } from './song'
+import { Part } from '../data/part'
 
-export class PartObject extends Parse.Object {
+export class PartObject extends Parse.Object implements Part {
 
   constructor(options?: any) {
     super(options)
