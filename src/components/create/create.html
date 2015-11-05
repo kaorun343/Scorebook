@@ -35,7 +35,7 @@
 
         <fieldset class="form-group">
           <label for="artist">アーティスト</label>
-          <input type="text" id="artist" name="song.artist" class="form-control">
+          <input type="text" id="artist" name="song.artist" class="form-control" v-model="song.artist">
         </fieldset>
 
         <fieldset class="form-group">
@@ -101,7 +101,7 @@
       <ul class="list-group list-group-flush">
         <li class="list-group-item" v-for="video in videos">
           <fieldset class="form-group">
-            <label for="">動画のID</label>
+            <label for="">動画のURL</label>
             <input type="text" name="" id="" class="form-control" v-model="video.url">
           </fieldset>
           <fieldset class="form-group">
@@ -118,6 +118,6 @@
       </div>
     </div>
 
-    <button type="submit" class="btn btn-primary btn-block">登録</button>
+    <button type="submit" class="btn btn-primary btn-block" :disabled="!enableSubmitButton">登録</button>
   </form>
 </div>

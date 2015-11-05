@@ -10,6 +10,7 @@ export class Song {
   page: number
   type: string
   grade: string
+  people: number
 
   constructor() {
     this.title = ""
@@ -20,8 +21,9 @@ export class Song {
     this.year = date.getFullYear()
     this.month = date.getMonth()
 
-    this.page = 0
+    this.page = 1
     this.type = types[0]
     this.grade = grades[0]
+    this.people = 1
   }
 }

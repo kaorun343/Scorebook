@@ -5,7 +5,13 @@ import { Part } from '../data/part'
 export class PartObject extends Parse.Object implements Part {
 
   constructor(options?: any) {
-    super(options)
+    super("Part", options)
+  }
+
+  static findBySong(songId: any) {
+    const query = new Parse.Query(PartObject)
+    query.equalTo("song", songId)
+    return query.find()
   }
 
   get type(): string {

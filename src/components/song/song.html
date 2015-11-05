@@ -1,16 +1,14 @@
 <div>
-  <a v-link="{path: previousPath}">戻る</a>
   <h1 v-text="song.title"></h1>
   <div class="lead" v-text="song.lead"></div>
 
-  <div v-el:twitter></div>
   <div>
     <a v-link="{name: 'edit', params: {id: '30'}}">内容を編集する</a>
   </div>
   <hr>
   <section>
     <h2>基本情報</h2>
-    <table class="table">
+    <table class="table" v-if="!$loadingRouteData">
       <tbody>
         <tr>
           <th scope="1">アーティスト</th><td v-text="song.artist"></td>
@@ -27,6 +25,9 @@
         <tr>
           <th scope="5">難易度</th><td v-text="song.grade"></td>
         </tr>
+        <tr>
+          <th scope="6">人数</th><td>{{song.people}}人</td>
+        </tr>
       </tbody>
     </table>
   </section>
@@ -38,12 +39,13 @@
         <tr><th>種類</th><th>上鍵盤</th><th>下鍵盤</th><th>ペダル鍵盤</th><th>リズム</th></tr>
       </thead>
       <tbody>
-        <tr>
-          <td>エレクトーン</td><td>あり</td><td>あり</td><td>あり</td><td>あり</td>
+        <tr v-for="part in parts" track-by="id">
+          <td>{{part.type}}</td>
+          <td>{{part.upper | exist}}</td>
+          <td>{{part.lower | exist}}</td>
+          <td>{{part.pedal | exist}}</td>
+          <td>{{part.rhythm | exist}}</td>
         </tr>
-          <tr>
-            <td>エレクトーン</td><td>あり</td><td>あり</td><td>あり</td><td>あり</td>
-          </tr>
       </tbody>
     </table>
   </section>
@@ -51,9 +53,7 @@
   <section>
     <h2>関連動画</h2>
     <div class="list-group">
-      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
-      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
-      <a href="" target="_blank" class="list-group-item">弾いてみた</a>
+      <a v-for="video in videos" :href="video.url" target="_blank" class="list-group-item" track-by="id" v-text="video.title"></a>
     </div>
   </section>
 </div>

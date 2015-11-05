@@ -5,7 +5,13 @@ import { Video } from '../data/video'
 export class VideoObject extends Parse.Object implements Video {
 
   constructor(options?: any) {
-    super(options)
+    super("Video", options)
+  }
+
+  static findBySong(songId: any) {
+    const query = new Parse.Query(VideoObject)
+    query.equalTo("song", songId)
+    return query.find()
   }
 
   get title(): string {

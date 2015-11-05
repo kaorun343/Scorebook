@@ -10,20 +10,15 @@ export class SongObject extends Parse.Object implements Song {
     return query.get(id)
   }
 
+  static findByAlbum(year: number, month: number) {
+    const query = new Parse.Query(SongObject)
+    query.equalTo("year", year)
+    query.equalTo("month", month)
+    return query.find<SongObject[]>()
+  }
+
   constructor(options?: any) {
-    super(options)
-  }
-
-  parts() {
-    const query = new Parse.Query(PartObject)
-    query.equalTo("song", this)
-    return query.find<PartObject>()
-  }
-
-  videos() {
-    const query = new Parse.Query(VideoObject)
-    query.equalTo("song", this)
-    return query.find<VideoObject>()
+    super("Song", options)
   }
 
   get year(): number {
@@ -90,11 +85,11 @@ export class SongObject extends Parse.Object implements Song {
     this.set("type", value)
   }
 
-  get star(): boolean {
-    return this.get("star")
+  get people(): number {
+    return this.get("people")
   }
 
-  set star(value: boolean) {
-    this.set("star", value)
+  set people(value: number) {
+    this.set("people", value)
   }
 }

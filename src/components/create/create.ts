@@ -6,10 +6,13 @@ import { App } from '../../app'
 import { Song } from '../../data/song'
 import { Part } from '../../data/part'
 import { Video } from '../../data/video'
+import { SongObject } from '../../objects/song'
+import { PartObject } from '../../objects/part'
+import { VideoObject } from '../../objects/video'
 
 interface Query {
-  year: number
-  month: number
+  year: string
+  month: string
 }
 
 @component
@@ -27,24 +30,28 @@ export class Create {
 
   private enableRemovePart: boolean
   private isVideoEmpty: boolean
+  private enableSubmitButton: boolean
 
-  private data() {
+  private data(): any {
     return {
       song: new Song,
       parts: [new Part],
-      videos: [new Video],
+      videos: [],
+      grades,
+      types,
       enableRemovePart: false,
-      isVideoEmpty: false
+      isVideoEmpty: false,
+      enableSubmitButton: true
     }
   }
 
   static route = {
     data: function(transition: VueRouter.Transition<App, any, any, any, Query>) {
-      var { query: {year, month} } = transition.to
+      const { query: {year, month} } = transition.to
       setTimeout((date: Date) => {
         transition.next({
-          'song.year': year || date.getFullYear(),
-          'song.month': month || date.getMonth() + 1
+          'song.year': Number(year) || date.getFullYear(),
+          'song.month': Number(month) || date.getMonth() + 1
         })
       }, 0, new Date)
     }
@@ -53,6 +60,7 @@ export class Create {
   addPart() {
     this.parts.push({type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
     this.enableRemovePart = true
+    this.updatePeople()
   }
 
   removePart(part: Part) {
@@ -60,6 +68,11 @@ export class Create {
     if (this.parts.length === 1) {
       this.enableRemovePart = false
     }
+    this.updatePeople()
+  }
+
+  updatePeople() {
+    this.song.people = this.parts.length
   }
 
   addVideo() {
@@ -77,7 +90,27 @@ export class Create {
   }
 
   submit() {
-    console.log(this)
+    if (!this.enableSubmitButton) {
+      return
+    }
+    this.enableSubmitButton = false
+    const song = new SongObject(this.song)
+    song.save<SongObject>().then((song) => {
+      const parts = this.parts.map((part) => {
+        let object = new PartObject(part)
+        object.set("song", song)
+        return object.save()
+      })
+
+      const videos = this.videos.map((video) => {
+        let object = new VideoObject(video)
+        object.set("song", song)
+        return object.save()
+      })
+      return Promise.all([...parts, ...videos])
+    }).then((result: any) => {
+      this.enableSubmitButton = true
+    })
   }
 
   @watch('song.year')
