@@ -5,6 +5,7 @@ import { Albums } from './components/albums/albums'
 import { Create } from './components/create/create'
 import { Edit } from './components/edit/edit'
 import { Song } from './components/song/song'
+import { Songs } from './components/songs/songs'
 
 export function configureRouter(router: VueRouter.Router<App>) {
   router.map({
@@ -24,7 +25,8 @@ export function configureRouter(router: VueRouter.Router<App>) {
       component: Create
     },
     "/songs": {
-      component: { template: "<div>songs and search bar</div>" }
+      name: "songs",
+      component: Songs
     },
     "/songs/:id": {
       name: "song",

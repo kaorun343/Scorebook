@@ -66,10 +66,6 @@ export class Edit implements SongForm {
           enableRemovePart: parts.length > 1
         }
       })
-    },
-    canDeactivate: function(transition: VueRouter.Transition<any, any, any, Params, any>) {
-      var result = confirm("編集中です。移動してもいいですか？")
-      return result;
     }
   }
 
@@ -86,6 +82,7 @@ export class Edit implements SongForm {
       song.set("lead", this.song.lead)
       song.set("grade", this.song.grade)
       song.set("type", this.song.type)
+      song.set("people", this.song.people)
       return song.save()
     }).then((song: SongObject) => {
       console.info(song)
@@ -153,7 +150,7 @@ export class Edit implements SongForm {
   }
 
   addPart() {
-    this.parts.push({id: undefined, type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
+    this.parts.push({id: undefined, type: "エレクトーン", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
     this.enableRemovePart = true
     this.updatePeople()
   }

@@ -29,6 +29,7 @@
         "./src/components/edit/edit.ts",
         "./src/components/navbar/navbar.ts",
         "./src/components/song/song.ts",
+        "./src/components/songs/songs.ts",
         "./src/constants/constants.ts",
         "./src/data/part.ts",
         "./src/data/song.ts",

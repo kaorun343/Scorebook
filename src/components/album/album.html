@@ -8,7 +8,7 @@
     <a class="list-group-item" v-for="song in songs" track-by="id" v-link="{name: 'song', params: {id: song.id}}">
       <h4 class="list-group-item-heading" v-text="song.title"></h4>
       <div>{{song.lead}}</div>
-      <div>{{song.artist}} ｜ {{song.type}} ｜ {{song.grade}}</div>
+      <div>{{song.artist}} ｜ {{song.type}} ｜ {{song.grade}} ｜ {{song.people}}人</div>
     </a>
   </div>
 
