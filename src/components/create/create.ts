@@ -9,6 +9,7 @@ import { Video } from '../../data/video'
 import { SongObject } from '../../objects/song'
 import { PartObject } from '../../objects/part'
 import { VideoObject } from '../../objects/video'
+import { SongForm } from '../../partials/form/song'
 
 interface Query {
   year: string
@@ -16,31 +17,31 @@ interface Query {
 }
 
 @component
-export class Create {
-  static template = require('./create.html')
+export class Create implements SongForm {
+  static template = require('../../partials/form/song.html')
 
-  $nextTick: Function
-
+  title: string
   song: Song
   videos: Video[]
   parts: Part[]
 
-  private grades: string[]
-  private types: string[]
+  grades: string[]
+  types: string[]
 
-  private enableRemovePart: boolean
-  private isVideoEmpty: boolean
-  private enableSubmitButton: boolean
+  enableRemovePart: boolean
+  isVideoEmpty: boolean
+  enableSubmitButton: boolean
 
-  private data(): any {
+  data(): any {
     return {
+      title: "新規作成",
       song: new Song,
       parts: [new Part],
       videos: [],
       grades,
       types,
       enableRemovePart: false,
-      isVideoEmpty: false,
+      isVideoEmpty: true,
       enableSubmitButton: true
     }
   }
@@ -58,7 +59,7 @@ export class Create {
   }
 
   addPart() {
-    this.parts.push({type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
+    this.parts.push({id: undefined, type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
     this.enableRemovePart = true
     this.updatePeople()
   }
@@ -76,7 +77,7 @@ export class Create {
   }
 
   addVideo() {
-    this.videos.push({title: "", url: ""})
+    this.videos.push({id: undefined, title: "", url: ""})
     if (this.isVideoEmpty) {
       this.isVideoEmpty = false
     }

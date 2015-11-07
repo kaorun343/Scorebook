@@ -4,14 +4,19 @@ import { Video } from '../data/video'
 
 export class VideoObject extends Parse.Object implements Video {
 
-  constructor(options?: any) {
-    super("Video", options)
+  static get(id: string): Parse.Promise<VideoObject> {
+    const query = new Parse.Query(this)
+    return query.get(id)
   }
 
-  static findBySong(songId: any) {
-    const query = new Parse.Query(VideoObject)
-    query.equalTo("song", songId)
+  static findBySong(song: SongObject): Parse.Promise<VideoObject[]> {
+    const query = new Parse.Query(this)
+    query.equalTo("song", song)
     return query.find()
+  }
+
+  constructor(options?: any) {
+    super("Video", options)
   }
 
   get title(): string {

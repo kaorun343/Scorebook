@@ -3,6 +3,7 @@ import { App } from './app'
 import { Album } from './components/album/album'
 import { Albums } from './components/albums/albums'
 import { Create } from './components/create/create'
+import { Edit } from './components/edit/edit'
 import { Song } from './components/song/song'
 
 export function configureRouter(router: VueRouter.Router<App>) {
@@ -31,7 +32,7 @@ export function configureRouter(router: VueRouter.Router<App>) {
     },
     "/songs/:id/edit": {
       name: "edit",
-      component: { template: "<div>edit song: {{$route.params.id}}</div>"}
+      component: Edit
     },
     "/settings": {
       component: { template: "<div>settings</div>" }

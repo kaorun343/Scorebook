@@ -2,6 +2,7 @@
 import { grades, types } from '../constants/constants'
 
 export class Song {
+  id: string
   title: string
   lead: string
   artist: string
