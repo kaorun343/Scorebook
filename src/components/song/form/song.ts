@@ -1,6 +1,6 @@
-import { Song } from '../../data/song'
-import { Part } from '../../data/part'
-import { Video } from '../../data/video'
+import { Song } from '../../../data/song'
+import { Part } from '../../../data/part'
+import { Video } from '../../../data/video'
 
 export interface SongForm {
   title: string

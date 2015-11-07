@@ -1,16 +1,16 @@
 "use strict"
 import _ = require('underscore')
 import component = require('vue-class-component')
-import { watch } from '../../decorators/decorators'
-import { grades, types } from '../../constants/constants'
-import { App } from '../../app'
-import { Song } from '../../data/song'
-import { Part } from '../../data/part'
-import { Video } from '../../data/video'
-import { SongObject } from '../../objects/song'
-import { PartObject } from '../../objects/part'
-import { VideoObject } from '../../objects/video'
-import { SongForm } from '../../partials/form/song'
+import { watch } from '../../../decorators/decorators'
+import { grades, types } from '../../../constants/constants'
+import { App } from '../../../app'
+import { Song } from '../../../data/song'
+import { Part } from '../../../data/part'
+import { Video } from '../../../data/video'
+import { SongObject } from '../../../objects/song'
+import { PartObject } from '../../../objects/part'
+import { VideoObject } from '../../../objects/video'
+import { SongForm } from '../form/song'
 
 interface Params {
   id: string
@@ -18,7 +18,7 @@ interface Params {
 
 @component
 export class Edit implements SongForm {
-  static template = require('../../partials/form/song.html')
+  static template = require('../form/song.html')
 
   title: string
   id: string

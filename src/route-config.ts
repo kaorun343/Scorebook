@@ -2,8 +2,8 @@
 import { App } from './app'
 import { Album } from './components/album/album'
 import { Albums } from './components/albums/albums'
-import { Create } from './components/create/create'
-import { Edit } from './components/edit/edit'
+import { Create } from './components/song/create/create'
+import { Edit } from './components/song/edit/edit'
 import { Song } from './components/song/song'
 import { Songs } from './components/songs/songs'
 
