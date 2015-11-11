@@ -16,12 +16,12 @@ export class Songs {
 
   $route: VueRouter.$route<any, any, Query>
 
-  text: string
+  title: string
   songs: Song[]
 
   data(): any {
     return {
-      text: "",
+      title: "",
       songs: []
     }
   }
@@ -30,15 +30,15 @@ export class Songs {
     data: function(transition: VueRouter.Transition<any, any, any, any, Query>) {
       const { query } = transition.to
       if (query.title) {
-        return SongObject.findByContext(query).then((songs) => {
+        return SongObject.findByQuery(query).then((songs) => {
           return ({
-            songs: songs.map(({id, attributes}) => _.assign({id}, attributes)),
-            text: query.title
+            title: query.title,
+            songs: songs.map(({id, attributes}) => _.assign({id}, attributes))
           })
         })
       } else {
         transition.next({
-          text: "",
+          title: "",
           songs: []
         })
       }
@@ -46,8 +46,8 @@ export class Songs {
   }
 
   search() {
-    if (this.text) {
-      this.$route.router.go({name: "songs", query: {title: this.text}})
+    if (this.title) {
+      this.$route.router.go({name: "songs", query: {title: this.title}})
     } else {
       this.$route.router.go({path: "/songs"})
     }

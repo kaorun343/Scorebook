@@ -17,7 +17,7 @@ export class SongObject extends Parse.Object implements Song {
     return query.find<SongObject[]>()
   }
 
-  static findByContext(context: any) {
+  static findByQuery(context: any) {
     const query = new Parse.Query(SongObject)
     query.matches("title", new RegExp(context.title), null)
     return query.find<SongObject[]>()
