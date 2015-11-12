@@ -73,8 +73,7 @@ export class Create {
         ...VideoObject.save(song, this.$refs.videos.videos)
       ])
     }).then((result: any) => {
-      console.log(result)
-      // this.$route.router.go({name: "song", params: {id: this.id}, query: {alert: `作成しました`}})
-    })
+      this.$route.router.go({name: "song", params: {id: this.id}})
+    }, (err: any) => {console.error(err)})
   }
 }
