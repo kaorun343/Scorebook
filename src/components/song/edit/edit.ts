@@ -4,9 +4,9 @@ import component = require('vue-class-component')
 import { watch } from '../../../decorators/decorators'
 import { grades, types } from '../../../constants/constants'
 import { App } from '../../../app'
-import { Song } from '../../../data/song'
-import { Part } from '../../../data/part'
-import { Video } from '../../../data/video'
+import { Song, SongWithId } from '../../../data/song'
+import { Part, PartWithId } from '../../../data/part'
+import { Video, VideoWidId } from '../../../data/video'
 import { SongObject } from '../../../objects/song'
 import { PartObject } from '../../../objects/part'
 import { VideoObject } from '../../../objects/video'
@@ -22,9 +22,9 @@ export class Edit implements SongForm {
 
   title: string
   id: string
-  song: Song
-  parts: Part[]
-  videos: Video[]
+  song: SongWithId
+  parts: PartWithId[]
+  videos: VideoWidId[]
 
   grades: string[]
   types: string[]
@@ -74,62 +74,18 @@ export class Edit implements SongForm {
       return
     }
     this.enableSubmitButton = false
-    SongObject.get(this.song.id).then((song: SongObject) => {
-      song.set("year", this.song.year)
-      song.set("month", this.song.month)
-      song.set("page", this.song.page)
-      song.set("title", this.song.title)
-      song.set("lead", this.song.lead)
-      song.set("grade", this.song.grade)
-      song.set("type", this.song.type)
-      song.set("people", this.song.people)
-      return song.save()
-    }).then((song: SongObject) => {
+    SongObject.update(this.song.id, this.song, this.parts.length).then((song) => {
       console.info(song)
-      const parts = this.parts.map((part) => {
-        if ( part.id ) {
-          return PartObject.get(part.id).then((p: PartObject) => {
-            p.set("type", part.type)
-            p.set("keyboards", part.keyboards)
-            return p.save()
-          })
-        } else {
-          const p = new PartObject(part)
-          p.set("song", song)
-          return p.save()
-        }
-      })
-
-      const videos = this.videos.map((video) => {
-        if ( video.id ) {
-          return VideoObject.get(video.id).then((v: VideoObject) => {
-            v.set("title", video.title)
-            v.set("url", video.url)
-            return v.save()
-          })
-        } else {
-          const v = new VideoObject(video)
-          v.set("song", song)
-          return v.save()
-        }
-      })
-
-      return Promise.all(<Parse.IPromise<Parse.Object>[]>[...parts, ...videos])
+      return Promise.all(<Parse.IPromise<Parse.Object>[]>[
+        ...PartObject.update(this.parts, song),
+        ...VideoObject.update(this.videos, song)
+      ])
     }).then((objects: any) => {
       console.info(objects)
-      const parts = this.destroyedParts.map((partId) => {
-        return PartObject.get(partId).then((part: PartObject) => {
-          return part.destroy()
-        })
-      })
-
-      const videos = this.destroyedVideos.map((videoId) => {
-        return VideoObject.get(videoId).then((video: VideoObject) => {
-          return video.destroy()
-        })
-      })
-
-      return Promise.all(<Parse.IPromise<Parse.Object>[]>[...parts, ...videos])
+      return Promise.all(<Parse.IPromise<Parse.Object>[]>[
+        ...PartObject.destroy(this.destroyedParts),
+        ...VideoObject.destroy(this.destroyedVideos)
+      ])
     }).then((objects: any) => {
       console.info(objects)
       this.destroyedVideos = []
@@ -138,7 +94,7 @@ export class Edit implements SongForm {
     }, (err: any) => {console.error(err)})
   }
 
-  removePart(part: Part) {
+  removePart(part: PartWithId) {
     if (part.id) {
       this.destroyedParts.push(part.id)
     }
@@ -146,20 +102,14 @@ export class Edit implements SongForm {
     if (this.parts.length === 1) {
       this.enableRemovePart = false
     }
-    this.updatePeople()
   }
 
   addPart() {
-    this.parts.push({id: undefined, type: "エレクトーン", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
+    this.parts.push({type: "エレクトーン", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
     this.enableRemovePart = true
-    this.updatePeople()
   }
 
-  updatePeople() {
-    this.song.people = this.parts.length
-  }
-
-  removeVideo(video: Video) {
+  removeVideo(video: VideoWidId) {
     if (video.id) {
       this.destroyedVideos.push(video.id)
     }
@@ -170,7 +120,7 @@ export class Edit implements SongForm {
   }
 
   addVideo() {
-    this.videos.push({id: undefined, title: "", url: ""})
+    this.videos.push({title: "", url: ""})
     if (this.isVideoEmpty) {
       this.isVideoEmpty = false
     }

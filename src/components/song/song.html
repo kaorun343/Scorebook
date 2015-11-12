@@ -14,7 +14,8 @@
           <th scope="1">アーティスト</th><td v-text="song.artist"></td>
         </tr>
         <tr>
-          <th scope="2">収録アルバム</th><td>月刊エレクトーン{{song.year}}年{{song.month}}月号</td>
+          <th scope="2">収録アルバム</th>
+          <td><a v-link="{name: 'album', params: {year: song.year, month: song.month}}">月刊エレクトーン{{song.year}}年{{song.month}}月号</a></td>
         </tr>
         <tr>
           <th scope="3">掲載ページ</th><td>{{song.page}}ページ</td>

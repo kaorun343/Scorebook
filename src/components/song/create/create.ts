@@ -59,9 +59,8 @@ export class Create implements SongForm {
   }
 
   addPart() {
-    this.parts.push({id: undefined, type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
+    this.parts.push({type: "", keyboards: ["上鍵盤", "下鍵盤", "ペダル鍵盤"]})
     this.enableRemovePart = true
-    this.updatePeople()
   }
 
   removePart(part: Part) {
@@ -69,15 +68,10 @@ export class Create implements SongForm {
     if (this.parts.length === 1) {
       this.enableRemovePart = false
     }
-    this.updatePeople()
-  }
-
-  updatePeople() {
-    this.song.people = this.parts.length
   }
 
   addVideo() {
-    this.videos.push({id: undefined, title: "", url: ""})
+    this.videos.push({title: "", url: ""})
     if (this.isVideoEmpty) {
       this.isVideoEmpty = false
     }
@@ -96,19 +90,12 @@ export class Create implements SongForm {
     }
     this.enableSubmitButton = false
     const song = new SongObject(this.song)
+    song.set("people", this.parts.length)
     song.save<SongObject>().then((song) => {
-      const parts = this.parts.map((part) => {
-        let object = new PartObject(part)
-        object.set("song", song)
-        return object.save()
-      })
-
-      const videos = this.videos.map((video) => {
-        let object = new VideoObject(video)
-        object.set("song", song)
-        return object.save()
-      })
-      return Promise.all([...parts, ...videos])
+      return Promise.all(<any>[
+        ...PartObject.save(song, this.parts),
+        ...VideoObject.save(song, this.videos)
+      ])
     }).then((result: any) => {
       this.enableSubmitButton = true
     })

@@ -1,7 +1,6 @@
 "use strict"
 
 export class Video {
-  id: string
   title: string
   url: string
 
@@ -10,3 +9,5 @@ export class Video {
     this.url = ""
   }
 }
+
+export type VideoWidId = ( Video & {id?: string} )

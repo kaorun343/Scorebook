@@ -43,21 +43,19 @@ export class Song {
   static route = {
     data: function(transition: VueRouter.Transition<any, any, any, Params, any>) {
       const { id } = transition.to.params
-      return SongObject.get(id).then((song: any) => {
-        return Promise.all([song, PartObject.findBySong(song), VideoObject.findBySong(song)])
+      return SongObject.get(id).then((song: SongObject) => {
+        return Promise.all(<any>[song, PartObject.findBySong(song), VideoObject.findBySong(song)])
       }).then(([song, parts, videos]: [SongObject, PartObject[], VideoObject[]]) => {
         return {
           song: song.attributes,
-          parts: parts.map(({attributes, id}: PartObject): PartTableRow => {
-            const {type, keyboards} = <PartData>attributes
+          parts: parts.map(({attributes: {type, keyboards}, id}: PartObject): PartTableRow => {
             const upper = keyboards.indexOf('上鍵盤') > -1
             const lower = keyboards.indexOf('下鍵盤') > -1
             const pedal = keyboards.indexOf('ペダル鍵盤') > -1
             const rhythm = keyboards.indexOf('リズム') > -1
             return { id, type, upper, lower, pedal, rhythm }
           }),
-          videos: videos.map(({attributes, id}: VideoObject) => {
-            const {title, url} = <VideoObject>attributes
+          videos: videos.map(({attributes: {title, url}, id}: VideoObject) => {
             return { id, title, url }
           })
         }

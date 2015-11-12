@@ -1,9 +1,9 @@
 "use strict";
-import { Song } from '../data/song'
+import { Song, SongWithId } from '../data/song'
 import { PartObject } from './part'
 import { VideoObject } from './video'
 
-export class SongObject extends Parse.Object implements Song {
+export class SongObject extends Parse.Object {
 
   static get(id: string) {
     const query = new Parse.Query(SongObject)
@@ -23,79 +23,23 @@ export class SongObject extends Parse.Object implements Song {
     return query.find<SongObject[]>()
   }
 
+  static update(id: string, song: SongWithId, people: number) {
+    return SongObject.get(id).then((target: SongObject) => {
+      target.set("year", song.year)
+      target.set("month", song.month)
+      target.set("page", song.page)
+      target.set("title", song.title)
+      target.set("lead", song.lead)
+      target.set("grade", song.grade)
+      target.set("type", song.type)
+      target.set("people", people)
+      return target.save<Parse.Promise<SongObject>>()
+    })
+  }
+
   constructor(options?: any) {
     super("Song", options)
   }
 
-  get year(): number {
-    return this.get("year")
-  }
-
-  set year(value: number) {
-    this.set("year", value)
-  }
-
-  get month(): number {
-    return this.get("month")
-  }
-
-  set month(value: number) {
-    this.set("month", value)
-  }
-
-  get page(): number {
-    return this.get("page")
-  }
-
-  set page(value: number) {
-    this.set("page", value)
-  }
-
-  get title(): string {
-    return this.get("title")
-  }
-
-  set title(value: string) {
-    this.set("title", value)
-  }
-
-  get artist(): string {
-    return this.get("artist")
-  }
-
-  set artist(value: string) {
-    this.set("artist", value)
-  }
-
-  get lead(): string {
-    return this.get("lead")
-  }
-
-  set lead(value: string) {
-    this.set("lead", value)
-  }
-
-  get grade(): string {
-    return this.get("grade")
-  }
-
-  set grade(value: string) {
-    this.set("grade", value)
-  }
-
-  get type(): string {
-    return this.get("type")
-  }
-
-  set type(value: string) {
-    this.set("type", value)
-  }
-
-  get people(): number {
-    return this.get("people")
-  }
-
-  set people(value: number) {
-    this.set("people", value)
-  }
+  attributes: Song
 }
