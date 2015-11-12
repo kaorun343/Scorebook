@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="card-header">動画情報</div>
+  <div class="card-block" v-show="isEmpty">動画がありません</div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item" v-for="video in videos">
+      <fieldset class="form-group">
+        <label for="">動画のURL</label>
+        <input type="text" name="" id="" class="form-control" v-model="video.url">
+      </fieldset>
+      <fieldset class="form-group">
+        <label for="">動画のタイトル</label>
+        <input type="text" name="" id="" class="form-control" v-model="video.title">
+      </fieldset>
+      <button class="btn btn-danger" type="button" @click="remove(video)">削除</button>
+    </li>
+  </ul>
+  <div class="card-footer">
+    <div class="text-right">
+      <button type="button" class="btn btn-success" @click="add">追加</button>
+    </div>
+  </div>
+</div>

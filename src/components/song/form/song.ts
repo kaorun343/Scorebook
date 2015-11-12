@@ -1,18 +1,46 @@
-import { Song } from '../../../data/song'
-import { Part } from '../../../data/part'
-import { Video } from '../../../data/video'
+"use strict"
+import component = require('vue-class-component')
+import { Song, SongWithId } from '../../../data/song'
+import { prop, watch } from '../../../decorators/decorators'
+import { grades, types } from '../../../constants/constants'
 
-export interface SongForm {
-  title: string
-  submit(): void
-  song: Song
+@component
+export class SongForm {
+  static template = require('./song.html')
+
+  @prop({type: Object, default: () => (new Song)})
+  song: SongWithId
+
   grades: string[]
   types: string[]
-  parts: Part[]
-  removePart(part: Part): void
-  addPart(): void
-  enableRemovePart: boolean
-  videos: Video[]
-  removeVideo(video: Video): void
-  addVideo(): void
+
+  data() {
+    return {
+      grades,
+      types
+    }
+  }
+
+  @watch('song.year')
+  private clampYear(value: number) {
+    if (value < 1971) {
+      this.song.year = 1971
+    }
+  }
+
+  @watch('song.month')
+  private clampMonth(value: number) {
+    if (value > 12) {
+      this.song.month = 12
+    } else if (value < 1) {
+      this.song.month = 1
+    }
+  }
+
+  @watch('song.page')
+  private clampPage(value: number) {
+    if (value < 1) {
+      this.song.page = 1
+    }
+  }
 }

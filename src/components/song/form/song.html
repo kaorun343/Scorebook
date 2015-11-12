@@ -1,122 +1,56 @@
-<div>
-  <h1 v-text="title"></h1>
-  <form @submit.prevent="submit">
+<div class="card">
+  <div class="card-header">基本情報</div>
+  <div class="card-block">
 
-    <div class="card">
-      <div class="card-header">基本情報</div>
-      <div class="card-block">
-
-        <div class="row">
-          <div class="col-sm-4">
-            <fieldset class="form-group">
-              <label for="year">発売年</label>
-              <input type="number" name="year" id="year" class="form-control" number v-model="song.year" min="1971">
-            </fieldset>
-          </div>
-          <div class="col-sm-4">
-            <fieldset class="form-group">
-              <label for="month">発売月</label>
-              <input type="number" name="month" id="month" class="form-control" number v-model="song.month" min="1" max="12">
-            </fieldset>
-          </div>
-          <div class="col-sm-4">
-            </fieldset>
-            <fieldset class="form-group">
-              <label for="page">掲載ページ</label>
-              <input type="number" name="page" id="page" class="form-control" v-model="song.page" number min="1">
-            </fieldset>
-          </div>
-        </div>
-
+    <div class="row">
+      <div class="col-sm-4">
         <fieldset class="form-group">
-          <label for="title">曲名</label>
-          <input type="text" id="title" name="title" class="form-control" v-model="song.title">
+          <label for="year">発売年</label>
+          <input type="number" name="year" id="year" class="form-control" number v-model="song.year" min="1971">
         </fieldset>
-
+      </div>
+      <div class="col-sm-4">
         <fieldset class="form-group">
-          <label for="artist">アーティスト</label>
-          <input type="text" id="artist" name="song.artist" class="form-control" v-model="song.artist">
+          <label for="month">発売月</label>
+          <input type="number" name="month" id="month" class="form-control" number v-model="song.month" min="1" max="12">
         </fieldset>
-
-        <fieldset class="form-group">
-          <label for="lead">リード文</label>
-          <input type="text" id="lead" name="song.lead" class="form-control" v-model="song.lead">
+      </div>
+      <div class="col-sm-4">
         </fieldset>
-
         <fieldset class="form-group">
-          <label for="grade">難易度</label>
-          <select name="grade" id="grade" class="form-control c-select" v-model="song.grade">
-            <option v-for="item in grades" :value="item">{{item}}</option>
-          </select>
-        </fieldset>
-
-        <fieldset class="form-group">
-          <label for="type">種類</label>
-          <select name="type" id="type" class="form-control c-select" v-model="song.type">
-            <option v-for="item in types" :value="item">{{item}}</option>
-          </select>
+          <label for="page">掲載ページ</label>
+          <input type="number" name="page" id="page" class="form-control" v-model="song.page" number min="1">
         </fieldset>
       </div>
     </div>
 
-    <div class="card">
-      <div class="card-header">パート情報</div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" v-for="part in parts">
-          <fieldset class="form-group">
-            <label for="">楽器</label>
-            <select name="" id="" class="form-control c-select" v-model="part.type">
-              <option value="エレクトーン">エレクトーン</option>
-              <option value="ピアノ">ピアノ</option>
-            </select>
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="" class="checkbox-inline">
-              <input type="checkbox" name="" id="" value="上鍵盤" v-model="part.keyboards"> 上鍵盤
-            </label>
-            <label for="" class="checkbox-inline">
-              <input type="checkbox" name="" id="" value="下鍵盤" v-model="part.keyboards"> 下鍵盤
-            </label>
-            <label for="" class="checkbox-inline">
-              <input type="checkbox" name="" id="" value="ペダル鍵盤" v-model="part.keyboards"> ペダル鍵盤
-            </label>
-            <label for="" class="checkbox-inline">
-              <input type="checkbox" name="" id="" value="リズム" v-model="part.keyboards"> リズム
-            </label>
-          </fieldset>
-          <button type="button" class="btn btn-danger" :disabled="!enableRemovePart" @click="removePart(part)">削除</button>
-        </li>
-      </ul>
-      <div class="card-footer">
-        <div class="text-right">
-          <button type="button" class="btn btn-success" @click="addPart">追加</button>
-        </div>
-      </div>
-    </div>
+    <fieldset class="form-group">
+      <label for="title">曲名</label>
+      <input type="text" id="title" name="title" class="form-control" v-model="song.title">
+    </fieldset>
 
-    <div class="card">
-      <div class="card-header">動画情報</div>
-      <div class="card-block" v-show="isVideoEmpty">動画がありません</div>
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item" v-for="video in videos">
-          <fieldset class="form-group">
-            <label for="">動画のURL</label>
-            <input type="text" name="" id="" class="form-control" v-model="video.url">
-          </fieldset>
-          <fieldset class="form-group">
-            <label for="">動画のタイトル</label>
-            <input type="text" name="" id="" class="form-control" v-model="video.title">
-          </fieldset>
-          <button class="btn btn-danger" type="button" @click="removeVideo(video)">削除</button>
-        </li>
-      </ul>
-      <div class="card-footer">
-        <div class="text-right">
-          <button type="button" class="btn btn-success" @click="addVideo">追加</button>
-        </div>
-      </div>
-    </div>
+    <fieldset class="form-group">
+      <label for="artist">アーティスト</label>
+      <input type="text" id="artist" name="song.artist" class="form-control" v-model="song.artist">
+    </fieldset>
 
-    <button type="submit" class="btn btn-primary btn-block" :disabled="!enableSubmitButton">登録</button>
-  </form>
+    <fieldset class="form-group">
+      <label for="lead">リード文</label>
+      <input type="text" id="lead" name="song.lead" class="form-control" v-model="song.lead">
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="grade">難易度</label>
+      <select name="grade" id="grade" class="form-control c-select" v-model="song.grade">
+        <option v-for="item in grades" :value="item">{{item}}</option>
+      </select>
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="type">種類</label>
+      <select name="type" id="type" class="form-control c-select" v-model="song.type">
+        <option v-for="item in types" :value="item">{{item}}</option>
+      </select>
+    </fieldset>
+  </div>
 </div>
