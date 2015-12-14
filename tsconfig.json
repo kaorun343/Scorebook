@@ -25,7 +25,10 @@
         "./src/components/album/album.ts",
         "./src/components/albums/albums.ts",
         "./src/components/albums/pagination.ts",
+        "./src/components/login/login.ts",
+        "./src/components/logout/logout.ts",
         "./src/components/navbar/navbar.ts",
+        "./src/components/register/register.ts",
         "./src/components/song/create/create.ts",
         "./src/components/song/edit/edit.ts",
         "./src/components/song/form/parts.ts",
@@ -60,5 +63,8 @@
         "./typings/underscore/underscore.d.ts",
         "./typings/vue/vue.d.ts"
     ],
-    "exclude": []
+    "exclude": [],
+    "atom": {
+        "rewriteTsconfig": true
+    }
 }

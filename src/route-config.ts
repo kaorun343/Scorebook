@@ -6,6 +6,9 @@ import { Create } from './components/song/create/create'
 import { Edit } from './components/song/edit/edit'
 import { Song } from './components/song/song'
 import { Songs } from './components/songs/songs'
+import { Login } from './components/login/login'
+import { Register } from './components/register/register'
+import { Logout } from './components/logout/logout'
 
 export function configureRouter(router: VueRouter.Router<App>) {
   router.map({
@@ -36,13 +39,27 @@ export function configureRouter(router: VueRouter.Router<App>) {
       name: "edit",
       component: Edit
     },
+    "/login": {
+      name: "login",
+      component: Login
+    },
+    "/register": {
+      name: "register",
+      component: Register
+    },
+    "/logout": {
+      name: "logout",
+      component: Logout
+    },
     "/settings": {
       component: { template: "<div>settings</div>" }
     }
   })
 
+  const year = (new Date).getFullYear()
+
   router.redirect({
-    "/albums": `/albums/${(new Date).getFullYear()}`
+    "/albums": `/albums/${year}`
   })
 
   router.afterEach((transition) => {

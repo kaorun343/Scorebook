@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="card card-block">
+      <h4 class="card-title">ユーザ登録</h4>
+      <form @submit.prevent>
+        <fieldset class="form-group">
+          <label for="username">ユーザ名</label>
+          <input type="text" name="username" id="username" class="form-control" v-model="username">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="email">Eメール</label>
+          <input type="email" name="email" id="email" class="form-control" v-model="email">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password">パスワード</label>
+          <input type="password" name="password" id="password" class="form-control" v-model="password">
+        </fieldset>
+        <fieldset class="form-group">
+          <label for="password_confirm">パスワードの確認</label>
+          <input type="password" name="password_confirm" id="password_confirm" class="form-control" v-model="password_confirm">
+        </fieldset>
+      </form>
+      <button type="button" class="btn btn-primary" :disabled="!canSubmit || !isValidPassword" @click.prevent="submit">ユーザを登録する</button>
+      <a v-link="{name: 'login'}" class="btn btn-secondary">ログイン画面</a>
+    </div>
+  </div>
+</div>
