@@ -15,19 +15,23 @@ export class Login {
     }
   }
 
+  $route: VueRouter.$route<any, any, any>
+
   submit() {
-    Parse.User.logIn(this.username, this.password)
+    Parse.User.logIn<Parse.User>(this.username, this.password).then((user) => {
+      this.$route.router.go("/")
+    })
   }
 
-  static route = {
-    canActivate: function(transition: any) {
-      return new Promise(function(resolve, reject) {
-        if (!Parse.User.current()) {
-          resolve()
+  static route: VueRouter.TransitionHook<any, any, any, any, any> = {
+    canActivate: function(transition) {
+      setTimeout(() => {
+        if (Parse.User.current() === null) {
+          transition.next()
         } else {
-          reject()
+          transition.abort()
         }
-      })
+      }, 0)
     }
   }
 }

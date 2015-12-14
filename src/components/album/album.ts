@@ -1,7 +1,6 @@
 "use strict"
-import _ = require('underscore')
+import Vue = require('vue')
 import component = require('vue-class-component')
-import { App } from '../../app'
 import { SongObject } from '../../objects/song'
 import { Song } from '../../data/song'
 
@@ -47,8 +46,8 @@ export class Album {
     return this.month === 1 ? this.year - 1 : this.year
   }
 
-  static route = {
-    data: function(transition: VueRouter.Transition<App, any, any, Params, any>) {
+  static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
+    data: function(transition) {
       const {year, month} = transition.to.params
       const y = Number(year)
       const m = Number(month)
@@ -56,7 +55,7 @@ export class Album {
       return SongObject.findByAlbum(y, m).then((songs) => {
         return songs.map((song) => {
           const {attributes, id} = song
-          return _.assign({id}, attributes)
+          return Vue.util.extend({id}, attributes)
         })
       }).then((songs) => ({songs, year: y, month: m}))
     }

@@ -21,8 +21,8 @@ export class Albums {
     }
   }
 
-  static route = {
-    data: function(transition: VueRouter.Transition<App, any, any, Params, any>) {
+  static route: VueRouter.TransitionHook<App, any, any, Params, any> = {
+    data: function(transition) {
       var { year } = transition.to.params
       setTimeout(() => {
         transition.next({

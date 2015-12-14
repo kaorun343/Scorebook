@@ -60,8 +60,7 @@
         "./typings/parse/parse.d.ts",
         "./typings/sinon/sinon.d.ts",
         "./typings/twitter/twitter.d.ts",
-        "./typings/underscore/underscore.d.ts",
-        "./typings/vue/vue.d.ts"
+        "./typings/underscore/underscore.d.ts"
     ],
     "exclude": [],
     "atom": {

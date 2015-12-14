@@ -1,6 +1,6 @@
 "use strict"
+import Vue = require('vue')
 import component = require('vue-class-component')
-import _ = require('underscore')
 import { Song } from '../../data/song'
 import { SongObject } from '../../objects/song'
 
@@ -33,7 +33,7 @@ export class Songs {
         return SongObject.findByQuery(query).then((songs) => {
           return ({
             title: query.title,
-            songs: songs.map(({id, attributes}) => _.assign({id}, attributes))
+            songs: songs.map(({id, attributes}) => Vue.util.extend({id}, attributes))
           })
         })
       } else {

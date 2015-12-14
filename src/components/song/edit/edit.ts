@@ -1,5 +1,6 @@
 "use strict"
-import _ = require('underscore')
+import Vue = require('vue')
+const _ = Vue.util
 import component = require('vue-class-component')
 import { Song, SongWithId } from '../../../data/song'
 import { Part, PartWithId } from '../../../data/part'
@@ -54,9 +55,9 @@ export class Edit {
         self.$refs.videos.isEmpty = videos.length === 0
         self.$refs.parts.isRemovable = parts.length > 1
         return {
-          song: _.assign({id: song.id}, song.attributes),
-          parts: parts.map(({id, attributes}: PartObject) => _.assign({id}, attributes)),
-          videos: videos.map(({id, attributes}: VideoObject) => _.assign({id}, attributes))
+          song: _.extend({id: song.id}, song.attributes),
+          parts: parts.map(({id, attributes}: PartObject) => _.extend({id}, attributes)),
+          videos: videos.map(({id, attributes}: VideoObject) => _.extend({id}, attributes))
         }
       })
     }
