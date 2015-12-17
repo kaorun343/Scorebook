@@ -1,0 +1,17 @@
+{
+	"rules": {
+        "no-empty": true,
+        "no-unreachable": true,
+        "no-unused-expression": true,
+        "no-unused-variable": true,
+        "no-use-before-declare": true,
+        "no-var-keyword": true,
+        "triple-equals": true,
+        "eofline": true,
+		"indent": [true, "spaces"],
+		"no-trailing-whitespace": true,
+        "jsdoc-format": true,
+        "quotemark": [true, "single", "avoid-escape"],
+        "semicolon": true
+	}
+}

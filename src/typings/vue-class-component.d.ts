@@ -1,4 +1,4 @@
 declare module 'vue-class-component' {
-  var decorator: ClassDecorator
-  export = decorator
+    const decorator: ClassDecorator;
+    export = decorator;
 }

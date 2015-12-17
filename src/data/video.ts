@@ -1,13 +1,13 @@
-"use strict"
+'use strict';
 
 export class Video {
-  title: string
-  url: string
+    title: string;
+    url: string;
 
-  constructor() {
-    this.title = ""
-    this.url = ""
-  }
+    constructor() {
+        this.title = '';
+        this.url = '';
+    }
 }
 
-export type VideoWidId = ( Video & {id?: string} )
+export type VideoWidId = (Video & { id?: string });

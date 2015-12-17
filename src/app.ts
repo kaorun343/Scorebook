@@ -1,18 +1,18 @@
-"use strict"
-import component = require('vue-class-component')
-import { Navbar } from './components/navbar/navbar'
+'use strict';
+import component = require('vue-class-component');
+import { Navbar } from './components/navbar/navbar';
 
 
 @component
 export class App {
-  static template = require('./app.html')
-  static components = { Navbar }
+  static template = require('./app.html');
+  static components = { Navbar };
 
-  active: string
+  active: string;
 
-  private data() {
+  protected data() {
     return {
-      active: ""
-    }
+      active: ''
+    };
   }
 }

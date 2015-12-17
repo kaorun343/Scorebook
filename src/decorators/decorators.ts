@@ -1,20 +1,21 @@
+'use strict';
 /**
  * decorator of an event
  * @param  {string}            eventName [description]
  * @return {PropertyDecorator}           [description]
  */
 export function event(eventName: string): PropertyDecorator {
-  return function(target: any, propertyKey: string) {
-    (target.constructor.events || (target.constructor.events = {}))[eventName] = propertyKey
-  }
+    return function(target: any, propertyKey: string) {
+        (target.constructor.events || (target.constructor.events = {}))[eventName] = propertyKey;
+    };
 }
 
 interface PropOption {
-  type?: any
-  required?: boolean
-  default?: any
-  twoWay?: boolean
-  validator?: (value: any) => boolean
+    type?: any;
+    required?: boolean;
+    default?: any;
+    twoWay?: boolean;
+    validator?: (value: any) => boolean;
 }
 
 /**
@@ -23,9 +24,9 @@ interface PropOption {
  * @return {PropertyDecorator}         [description]
  */
 export function prop(options: PropOption): PropertyDecorator {
-  return function(target: any, propertyKey: string) {
-    (target.constructor.props || (target.constructor.props = {}))[propertyKey] = options
-  }
+    return function(target: any, propertyKey: string) {
+        (target.constructor.props || (target.constructor.props = {}))[propertyKey] = options;
+    };
 }
 
 /**
@@ -34,7 +35,7 @@ export function prop(options: PropOption): PropertyDecorator {
  * @return {PropertyDecorator}      [description]
  */
 export function watch(path: string): PropertyDecorator {
-  return function(target: any, propertyKey: string) {
-    (target.constructor.watch || (target.constructor.watch = {}))[path] = propertyKey
-  }
+    return function(target: any, propertyKey: string) {
+        (target.constructor.watch || (target.constructor.watch = {}))[path] = propertyKey;
+    };
 }
