@@ -7,18 +7,18 @@
     <li class="nav-item" :class="{active: active === 'albums'}">
       <a v-link="{path: '/albums'}" class="nav-link">アルバム</a>
     </li>
-    <li class="nav-item" :class="{active: active === 'create'}">
+    <li class="nav-item" :class="{active: active === 'create'}" v-if="auth">
       <a v-link="{path: '/create'}" class="nav-link">新規作成</a>
     </li>
   </ul>
   <ul class="nav navbar-nav pull-right">
-    <li class="nav-item" :class="{active: active === 'settings'}">
+    <li class="nav-item" :class="{active: active === 'settings'}" v-if="auth">
       <a v-link="{path: '/settings'}" class="nav-link">設定</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" v-if="auth">
       <a href="" class="nav-link" v-link="{path: '/logout'}">ログアウト</a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item" v-if="!auth">
       <a href="" class="nav-link" v-link="{path: '/login'}">ログイン</a>
     </li>
   </ul>

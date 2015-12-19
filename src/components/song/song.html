@@ -53,8 +53,17 @@
   <hr>
   <section>
     <h2>関連動画</h2>
-    <div class="list-group">
-      <a v-for="video in videos" :href="video.url" target="_blank" class="list-group-item" track-by="id" v-text="video.title"></a>
-    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>タイトル</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="video in videos">
+          <td><a :href="video.url" target="_blank" track-by="id" v-text="video.title"></a></td>
+        </tr>
+      </tbody>
+    </table>
   </section>
 </div>

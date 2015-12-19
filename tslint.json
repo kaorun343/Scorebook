@@ -8,10 +8,27 @@
         "no-var-keyword": true,
         "triple-equals": true,
         "eofline": true,
-		"indent": [true, "spaces"],
-		"no-trailing-whitespace": true,
+        "indent": [true, "spaces"],
+        "no-trailing-whitespace": true,
         "jsdoc-format": true,
+        "one-line": [
+                true,
+                "check-catch",
+                "check-else",
+                "check-open-brace",
+                "check-whitespace"
+        ],
         "quotemark": [true, "single", "avoid-escape"],
-        "semicolon": true
+        "semicolon": true,
+        "whitespace": [
+                true,
+                "check-branch",
+                "check-decl",
+                "check-operator",
+                "check-module",
+                "check-seperator",
+                "check-type",
+                "check-typecast"
+        ]
 	}
 }

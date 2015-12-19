@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { App } from '../../../app';
 import { Song } from '../../../data/song';
 import { Part } from '../../../data/part';
 import { Video } from '../../../data/video';
@@ -45,7 +46,7 @@ export class Create {
         };
     }
 
-    static route: VueRouter.TransitionHook<any, any, any, any, Query> = {
+    static route: VueRouter.TransitionHook<App, any, any, any, Query> = {
         data: function(transition) {
             const { query: {year, month} } = transition.to;
             return new Promise((resolve) => {
@@ -56,6 +57,9 @@ export class Create {
                     });
                 }, 0, new Date());
             });
+        },
+        canActivate: function(transition) {
+            return transition.to.router.app.auth;
         }
     };
 
@@ -68,7 +72,7 @@ export class Create {
         song.set('people', this.$refs.parts.parts.length);
         song.save<SongObject>().then((song) => {
             this.id = song.id;
-            return Promise.all(<any>[
+            return Promise.all(<any> [
                 ...PartObject.save(song, this.$refs.parts.parts),
                 ...VideoObject.save(song, this.$refs.videos.videos)
             ]);

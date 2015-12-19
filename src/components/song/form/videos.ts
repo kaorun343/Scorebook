@@ -17,7 +17,7 @@ export class VideosForm {
         };
     }
 
-    @prop({ type: Array, default: () => (<VideoWidId[]>[]) })
+    @prop({ type: Array, default: () => (<VideoWidId[]> []) })
     videos: VideoWidId[];
 
     add() {

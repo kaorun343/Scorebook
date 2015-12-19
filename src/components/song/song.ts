@@ -43,7 +43,7 @@ export class Song {
         data: function(transition) {
             const { id } = transition.to.params;
             return SongObject.get(id).then((song: SongObject) => {
-                return Promise.all(<any>[song, PartObject.findBySong(song), VideoObject.findBySong(song)]);
+                return Promise.all(<any> [song, PartObject.findBySong(song), VideoObject.findBySong(song)]);
             }).then(([song, parts, videos]: [SongObject, PartObject[], VideoObject[]]) => {
                 return {
                     song: song.attributes,

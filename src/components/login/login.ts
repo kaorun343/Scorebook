@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { App } from '../../app';
 
 @component
 export class Login {
@@ -15,7 +16,7 @@ export class Login {
         };
     }
 
-    $route: VueRouter.$route<any, any, any>;
+    $route: VueRouter.$route<App, any, any>;
 
     submit() {
         Parse.User.logIn<Parse.User>(this.username, this.password).then((user) => {
@@ -23,15 +24,9 @@ export class Login {
         });
     }
 
-    static route: VueRouter.TransitionHook<any, any, any, any, any> = {
+    static route: VueRouter.TransitionHook<App, any, any, any, any> = {
         canActivate: function(transition) {
-            setTimeout(() => {
-                if (Parse.User.current() === null) {
-                    transition.next();
-                } else {
-                    transition.abort();
-                }
-            }, 0);
+            return !transition.to.router.app.auth;
         }
     };
 }

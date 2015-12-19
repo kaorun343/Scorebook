@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { App } from '../../app';
 
 @component
 export class Register {
@@ -12,7 +13,7 @@ export class Register {
 
     canSubmit: boolean;
 
-    $route: VueRouter.$route<any, any, any>;
+    $route: VueRouter.$route<App, any, any>;
 
     protected data() {
         return {
@@ -45,15 +46,9 @@ export class Register {
         });
     }
 
-    static route = {
-        canActivate: function(transition: any) {
-            return new Promise(function(resolve, reject) {
-                if (!Parse.User.current()) {
-                    resolve();
-                } else {
-                    reject();
-                }
-            });
+    static route: VueRouter.TransitionHook<App, any, any, any, any> = {
+        canActivate: function(transition) {
+            return !transition.to.router.app.auth;
         }
     };
 }

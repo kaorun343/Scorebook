@@ -62,7 +62,12 @@ export function configureRouter(router: VueRouter.Router<App>) {
         '/albums': `/albums/${year}`
     });
 
-    router.afterEach((transition) => {
+    router.beforeEach(transition => {
+        router.app.auth = Parse.User.current() !== null;
+        transition.next();
+    });
+
+    router.afterEach(transition => {
         router.app.active = transition.to.path.split('/')[1];
     });
 }

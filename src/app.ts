@@ -9,10 +9,12 @@ export class App {
   static components = { Navbar };
 
   active: string;
+  auth: boolean;
 
   protected data() {
     return {
-      active: ''
+      active: '',
+      auth: false
     };
   }
 }

@@ -16,6 +16,7 @@
     },
     "filesGlob": [
         "./**/*.ts",
+        "./**/*.d.ts",
         "./**/*.tsx",
         "!./node_modules/typescript/**/*.ts"
     ],
@@ -47,6 +48,7 @@
         "./src/objects/song.ts",
         "./src/objects/video.ts",
         "./src/route-config.ts",
+        "./src/typings/custom.d.ts",
         "./src/typings/env.d.ts",
         "./src/typings/vue-class-component.d.ts",
         "./src/typings/vue-router.d.ts",

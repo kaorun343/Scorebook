@@ -9,4 +9,7 @@ export class Navbar {
     @prop({ type: String, default: '/' })
     active: string;
 
+    @prop({ type: Boolean, default: false })
+    auth: boolean;
+
 }

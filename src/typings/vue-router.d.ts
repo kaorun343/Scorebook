@@ -28,11 +28,9 @@ declare namespace VueRouter {
     }
 
     interface RouteMapObject {
-        [path: string]: {
-            component: any,
-            subRoutes?: RouteMapObject,
-            [key: string]: any
-        };
+        component: any;
+        subRoutes?: { [key: string]: RouteMapObject };
+        [key: string]: any;
     }
 
     interface Router<RootVueApp> {
@@ -42,7 +40,7 @@ declare namespace VueRouter {
 
         start(App: any, el: string | Element): void;
         stop(): void;
-        map(routeMap: RouteMapObject): void;
+        map(routeMap: { [path: string]: RouteMapObject }): void;
         on(path: string, config: Object): void;
         go(path: string | Object): void;
         replace(path: string): void;
