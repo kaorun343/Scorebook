@@ -1,6 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
-import { prop } from '../../decorators/decorators';
+import { prop } from 'vue-property-decorator';
 
 @component
 export class Navbar {
