@@ -16,9 +16,11 @@ export class SongObject extends Parse.Object {
     }
 
     static findByQuery(context: any) {
-        const query = new Parse.Query(SongObject);
-        query.matches('title', new RegExp(context.title), null);
-        return query.find<SongObject[]>();
+        const title = new Parse.Query(SongObject);
+        title.matches('title', new RegExp(context.title), null);
+        const lead = new Parse.Query(SongObject);
+        lead.matches('lead', new RegExp(context.title), null);
+        return Parse.Query.or(title, lead).find<SongObject[]>();
     }
 
     static update(id: string, song: SongWithId, people: number) {

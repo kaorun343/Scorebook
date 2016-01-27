@@ -1,21 +1,18 @@
 'use strict';
 import component = require('vue-class-component');
-import { prop } from 'vue-property-decorator';
+import { prop, Data } from 'vue-property-decorator';
 import { Part, PartWithId } from '../../../data/part';
 
 @component
+@Data(() => ({
+    toBeDestroyed: [] as string[],
+    isRemovable: true
+}))
 export class PartsForm {
     static template = require('./parts.html');
 
     toBeDestroyed: string[];
     isRemovable: boolean;
-
-    protected data(): any {
-        return {
-            toBeDestroyed: [],
-            isRemovable: true
-        };
-    }
 
     @prop({ type: Array, default: () => ([new Part()]) })
     parts: PartWithId[];

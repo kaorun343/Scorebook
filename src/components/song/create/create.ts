@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { App } from '../../../app';
 import { Song } from '../../../data/song';
 import { Part } from '../../../data/part';
@@ -17,6 +18,13 @@ interface Query {
 }
 
 @component
+@Data(() => ({
+    id: '',
+    song: new Song(),
+    parts: [new Part()],
+    videos: [],
+    enableSubmitButton: true
+}))
 export class Create {
     static template = require('./create.html');
     static components = { SongForm, PartsForm, VideosForm };
@@ -35,16 +43,6 @@ export class Create {
     };
 
     $route: VueRouter.$route<any, any, Query>;
-
-    protected data(): any {
-        return {
-            id: '',
-            song: new Song(),
-            parts: [new Part()],
-            videos: [],
-            enableSubmitButton: true
-        };
-    }
 
     static route: VueRouter.TransitionHook<App, any, any, any, Query> = {
         data: function(transition) {
@@ -72,10 +70,10 @@ export class Create {
         song.set('people', this.$refs.parts.parts.length);
         song.save<SongObject>().then((song) => {
             this.id = song.id;
-            return Promise.all(<any> [
+            return Promise.all([
                 ...PartObject.save(song, this.$refs.parts.parts),
                 ...VideoObject.save(song, this.$refs.videos.videos)
-            ]);
+            ] as any[]);
         }).then((result: any) => {
             this.$route.router.go({ name: 'song', params: { id: this.id } });
         }, (err: any) => { console.error(err); });

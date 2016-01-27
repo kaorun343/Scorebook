@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { App } from '../../app';
 import { Pagination } from './pagination';
 
@@ -8,18 +9,12 @@ interface Params {
 }
 
 @component
+@Data(() => ({ year: (new Date().getFullYear()) }))
 export class Albums {
     static template = require('./albums.html');
     static components = { Pagination };
 
     year: number;
-
-    protected data() {
-        const date = new Date();
-        return {
-            year: date.getFullYear()
-        };
-    }
 
     static route: VueRouter.TransitionHook<App, any, any, Params, any> = {
         data: function(transition) {

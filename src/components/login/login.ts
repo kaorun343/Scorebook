@@ -1,20 +1,18 @@
 'use strict';
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { App } from '../../app';
 
 @component
+@Data(() => ({
+    username: '',
+    password: ''
+}))
 export class Login {
     static template = require('./login.html');
 
     username: string;
     password: string;
-
-    protected data() {
-        return {
-            username: '',
-            password: ''
-        };
-    }
 
     $route: VueRouter.$route<App, any, any>;
 

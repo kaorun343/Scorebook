@@ -1,23 +1,20 @@
 'use strict';
 import component = require('vue-class-component');
-import { prop } from 'vue-property-decorator';
+import { prop, Data } from 'vue-property-decorator';
 import { VideoWidId } from '../../../data/video';
 
 @component
+@Data(() => ({
+    toBeDestroyed: [] as string[],
+    isEmpty: true
+}))
 export class VideosForm {
     static template = require('./videos.html');
 
     toBeDestroyed: string[];
     isEmpty: boolean;
 
-    protected data(): any {
-        return {
-            toBeDestroyed: [],
-            isEmpty: true
-        };
-    }
-
-    @prop({ type: Array, default: () => (<VideoWidId[]> []) })
+    @prop({ type: Array, default: () => ([] as VideoWidId[]) })
     videos: VideoWidId[];
 
     add() {

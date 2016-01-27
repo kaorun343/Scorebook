@@ -1,5 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { SongObject } from '../../objects/song';
 import { PartObject } from '../../objects/part';
 import { VideoObject } from '../../objects/video';
@@ -20,6 +21,12 @@ interface PartTableRow {
 }
 
 @component
+@Data(() => ({
+    song: new SongData(),
+    parts: [],
+    videos: [],
+    previousPath: ''
+}))
 export class Song {
     static template = require('./song.html');
     static filters = {
@@ -29,21 +36,13 @@ export class Song {
     song: SongData;
     parts: PartTableRow[];
     videos: VideoData[];
-
-    protected data(): any {
-        return {
-            song: new SongData(),
-            parts: [],
-            videos: [],
-            previousPath: ''
-        };
-    }
+    previousPath: string;
 
     static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
         data: function(transition) {
             const { id } = transition.to.params;
             return SongObject.get(id).then((song: SongObject) => {
-                return Promise.all(<any> [song, PartObject.findBySong(song), VideoObject.findBySong(song)]);
+                return Promise.all([song, PartObject.findBySong(song), VideoObject.findBySong(song)] as any[]);
             }).then(([song, parts, videos]: [SongObject, PartObject[], VideoObject[]]) => {
                 return {
                     song: song.attributes,

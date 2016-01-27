@@ -1,10 +1,14 @@
 'use strict';
 import component = require('vue-class-component');
 import { Song, SongWithId } from '../../../data/song';
-import { prop, watch } from 'vue-property-decorator';
+import { prop, watch, Data } from 'vue-property-decorator';
 import { grades, types } from '../../../constants/constants';
 
 @component
+@Data(() => ({
+    grades,
+    types
+}))
 export class SongForm {
     static template = require('./song.html');
 
@@ -13,13 +17,6 @@ export class SongForm {
 
     grades: string[];
     types: string[];
-
-    protected data() {
-        return {
-            grades,
-            types
-        };
-    }
 
     @watch('song.year')
     protected clampYear(value: number) {

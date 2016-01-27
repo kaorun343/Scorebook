@@ -1,8 +1,16 @@
 'use strict';
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { App } from '../../app';
 
 @component
+@Data(() => ({
+    username: '',
+    email: '',
+    password: '',
+    password_confirm: '',
+    canSubmit: true
+}))
 export class Register {
     static template = require('./register.html');
 
@@ -14,16 +22,6 @@ export class Register {
     canSubmit: boolean;
 
     $route: VueRouter.$route<App, any, any>;
-
-    protected data() {
-        return {
-            username: '',
-            email: '',
-            password: '',
-            password_confirm: '',
-            canSubmit: true
-        };
-    }
 
     get isValidPassword(): boolean {
         return this.password === this.password_confirm;

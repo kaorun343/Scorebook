@@ -1,6 +1,7 @@
 'use strict';
 import Vue = require('vue');
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { Song } from '../../data/song';
 import { SongObject } from '../../objects/song';
 
@@ -11,6 +12,10 @@ interface Query {
 }
 
 @component
+@Data(() => ({
+    title: '',
+    songs: [] as Song[]
+}))
 export class Songs {
     static template = require('./songs.html');
 
@@ -18,13 +23,6 @@ export class Songs {
 
     title: string;
     songs: Song[];
-
-    data(): any {
-        return {
-            title: '',
-            songs: []
-        };
-    }
 
     static route: VueRouter.TransitionHook<any, any, any, any, Query> = {
         data: function(transition) {

@@ -10,4 +10,4 @@ export class Part {
     }
 }
 
-export type PartWithId = ( Part & {id?: string} );
+export type PartWithId = (Part & { id?: string });

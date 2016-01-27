@@ -1,6 +1,7 @@
 'use strict';
 import Vue = require('vue');
 import component = require('vue-class-component');
+import { Data } from 'vue-property-decorator';
 import { SongObject } from '../../objects/song';
 import { Song } from '../../data/song';
 
@@ -10,21 +11,20 @@ interface Params {
 }
 
 @component
+@Data(() => {
+    const date = new Date();
+    return {
+        year: date.getFullYear(),
+        month: date.getMonth() + 1,
+        songs: [] as (Song & { id: string })[]
+    };
+})
 export class Album {
     static template = require('./album.html');
 
     year: number;
     month: number;
     songs: (Song & { id: string })[];
-
-    protected data(): any {
-        const date = new Date();
-        return {
-            year: date.getFullYear(),
-            month: date.getMonth() + 1,
-            songs: []
-        };
-    }
 
     get href(): string {
         return `http://www.ymm.co.jp/magazine/electone/${this.year * 100 + this.month}.php`;
