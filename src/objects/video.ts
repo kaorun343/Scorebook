@@ -1,6 +1,17 @@
 'use strict';
 import { SongObject } from './song';
-import { Video, VideoWidId } from '../data/video';
+
+export class Video {
+    title: string;
+    url: string;
+
+    constructor() {
+        this.title = '';
+        this.url = '';
+    }
+}
+
+export type VideoWithId = (Video & { id?: string });
 
 export class VideoObject extends Parse.Object {
 
@@ -23,7 +34,7 @@ export class VideoObject extends Parse.Object {
         });
     }
 
-    static update(videos: VideoWidId[], song: SongObject) {
+    static update(videos: VideoWithId[], song: SongObject) {
         return videos.map((video) => {
             if (video.id) {
                 VideoObject.get(video.id).then((v: VideoObject) => {

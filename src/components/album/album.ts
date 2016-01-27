@@ -3,7 +3,7 @@ import Vue = require('vue');
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
 import { SongObject } from '../../objects/song';
-import { Song } from '../../data/song';
+import { SongWithId } from '../../objects/song';
 
 interface Params {
     year: string;
@@ -16,7 +16,7 @@ interface Params {
     return {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
-        songs: [] as (Song & { id: string })[]
+        songs: [] as SongWithId[]
     };
 })
 export class Album {
@@ -24,7 +24,7 @@ export class Album {
 
     year: number;
     month: number;
-    songs: (Song & { id: string })[];
+    songs: SongWithId[];
 
     get href(): string {
         return `http://www.ymm.co.jp/magazine/electone/${this.year * 100 + this.month}.php`;

@@ -1,7 +1,7 @@
 'use strict';
 import component = require('vue-class-component');
 import { prop, Data } from 'vue-property-decorator';
-import { VideoWidId } from '../../../data/video';
+import { VideoWithId } from '../../../objects/video';
 
 @component
 @Data(() => ({
@@ -14,8 +14,8 @@ export class VideosForm {
     toBeDestroyed: string[];
     isEmpty: boolean;
 
-    @prop({ type: Array, default: () => ([] as VideoWidId[]) })
-    videos: VideoWidId[];
+    @prop({ type: Array, default: () => ([] as VideoWithId[]) })
+    videos: VideoWithId[];
 
     add() {
         this.videos.push({ title: '', url: '' });
@@ -24,7 +24,7 @@ export class VideosForm {
         }
     }
 
-    remove(video: VideoWidId) {
+    remove(video: VideoWithId) {
         if (video.id) {
             this.toBeDestroyed.push(video.id);
         }

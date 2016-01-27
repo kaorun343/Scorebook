@@ -1,7 +1,7 @@
 'use strict';
 import component = require('vue-class-component');
 import { prop, Data } from 'vue-property-decorator';
-import { Part, PartWithId } from '../../../data/part';
+import { Part, PartWithId } from '../../../objects/part';
 
 @component
 @Data(() => ({

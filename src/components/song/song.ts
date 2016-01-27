@@ -1,11 +1,9 @@
 'use strict';
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
-import { SongObject } from '../../objects/song';
+import { SongObject, Song as SongData } from '../../objects/song';
 import { PartObject } from '../../objects/part';
-import { VideoObject } from '../../objects/video';
-import { Song as SongData } from '../../data/song';
-import { Video as VideoData } from '../../data/video';
+import { VideoObject, Video as VideoData } from '../../objects/video';
 
 interface Params {
     id: string;

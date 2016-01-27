@@ -2,12 +2,9 @@
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
 import { App } from '../../../app';
-import { Song } from '../../../data/song';
-import { Part } from '../../../data/part';
-import { Video } from '../../../data/video';
-import { SongObject } from '../../../objects/song';
-import { PartObject } from '../../../objects/part';
-import { VideoObject } from '../../../objects/video';
+import { SongObject, Song } from '../../../objects/song';
+import { PartObject, Part } from '../../../objects/part';
+import { VideoObject, Video } from '../../../objects/video';
 import { SongForm } from '../form/song';
 import { PartsForm } from '../form/parts';
 import { VideosForm } from '../form/videos';

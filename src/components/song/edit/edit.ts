@@ -4,16 +4,12 @@ const _ = Vue.util;
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
 import { App } from '../../../app';
-import { Song, SongWithId } from '../../../data/song';
-import { PartWithId } from '../../../data/part';
-import { VideoWidId } from '../../../data/video';
-import { SongObject } from '../../../objects/song';
-import { PartObject } from '../../../objects/part';
-import { VideoObject } from '../../../objects/video';
+import { SongObject, Song, SongWithId } from '../../../objects/song';
+import { PartObject, PartWithId } from '../../../objects/part';
+import { VideoObject, VideoWithId } from '../../../objects/video';
 import { SongForm } from '../form/song';
 import { PartsForm } from '../form/parts';
 import { VideosForm } from '../form/videos';
-
 
 interface Params {
     id: string;
@@ -32,7 +28,7 @@ export class Edit {
 
     song: SongWithId;
     parts: PartWithId[];
-    videos: VideoWidId[];
+    videos: VideoWithId[];
 
     enableSubmitButton: boolean;
 

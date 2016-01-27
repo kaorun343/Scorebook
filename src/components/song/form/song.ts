@@ -1,6 +1,6 @@
 'use strict';
 import component = require('vue-class-component');
-import { Song, SongWithId } from '../../../data/song';
+import { Song, SongWithId } from '../../../objects/song';
 import { prop, watch, Data } from 'vue-property-decorator';
 import { grades, types } from '../../../constants/constants';
 

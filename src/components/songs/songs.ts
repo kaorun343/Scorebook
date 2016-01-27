@@ -2,8 +2,7 @@
 import Vue = require('vue');
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
-import { Song } from '../../data/song';
-import { SongObject } from '../../objects/song';
+import { SongObject, Song } from '../../objects/song';
 
 interface Query {
     title: string;

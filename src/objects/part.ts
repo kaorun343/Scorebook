@@ -1,6 +1,17 @@
 'use strict';
 import { SongObject } from './song';
-import { Part, PartWithId } from '../data/part';
+
+export class Part {
+    type: string;
+    keyboards: string[];
+
+    constructor() {
+        this.type = 'エレクトーン';
+        this.keyboards = ['上鍵盤', '下鍵盤', 'ペダル鍵盤', 'リズム'];
+    }
+}
+
+export type PartWithId = (Part & { id?: string });
 
 export class PartObject extends Parse.Object {
 
