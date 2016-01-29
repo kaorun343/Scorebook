@@ -1,18 +1,24 @@
 'use strict';
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
-import { Navbar } from './components/navbar/navbar';
+import { Songs } from './components/songs/songs';
 
 
 @component
 @Data(() => ({
-    active: '',
-    auth: false
+    text: '',
+    modal: false
 }))
 export class App {
     static template = require('./app.html');
-    static components = { Navbar };
+    static components = { Songs };
 
-    active: string;
+    text: string;
+    modal: boolean;
+
+    search() {
+      this.modal = true;
+    }
+
     auth: boolean;
 }

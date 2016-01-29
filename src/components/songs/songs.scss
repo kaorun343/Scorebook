@@ -1,0 +1,96 @@
+.songs-wrapper {
+  display: none;
+  position: fixed;
+  background-color: rgba(0, 0, 0, .5);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  padding: 30px;
+  z-index: 1000;
+
+  &.show {
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include breakpoint(medium) {
+    border-right: 1px solid $medium-gray;
+    display: block;
+    position: static;
+    background-color: $white;
+    width: 320px;
+    height: auto;
+    padding: 0px;
+
+    overflow-y: scroll;
+  }
+
+  @include breakpoint(large) {
+    width: 384px;
+  }
+
+  .button-wrapper {
+     padding: 20px 20px;
+  }
+}
+
+.songs-modal-header {
+  background-color: $white;
+  border-bottom: 1px solid $medium-gray;
+  padding: 10px 20px;
+  display: flex;
+  height: 80px;
+
+  @include breakpoint(medium) {
+    display: none;
+  }
+
+  h2 {
+    flex: 1;
+  }
+}
+
+.songs {
+  background-color: $white;
+  height: 100%;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  @include breakpoint(medium) {
+    overflow-y: auto;
+  }
+}
+
+
+.song-cell {
+  display: block;
+  text-decoration: none;
+  padding: 20px 20px;
+
+  border-bottom: 1px solid $light-gray;
+
+  .year {
+    font-size: 16px;
+    color: #777;
+  }
+
+  .lead {
+    font-size: 16px;
+    color: #999;
+  }
+
+  .title {
+    color: $primary-color;
+    font-size: 24px;
+  }
+
+  .artist {
+    color: #777;
+    font-size: 16px;
+  }
+
+  &:hover {
+    background-color: #eee;
+  }
+}

@@ -1,52 +1,48 @@
 'use strict';
-// import Vue = require('vue');
-import component = require('vue-class-component');
-import { Data } from 'vue-property-decorator';
-// import { SongObject, Song } from '../../objects/song';
+import VueComponent = require('vue-class-component');
+import { Data, prop } from 'vue-property-decorator';
+import { Cell } from './cell';
 
-interface Query {
-    title: string;
-    year: string;
-    month: string;
-}
-
-@component
+@VueComponent
 @Data(() => ({
-    title: '',
-    // songs: [] as Song[]
+  loading: false,
+  songs: [] as any[]
 }))
 export class Songs {
     static template = require('./songs.html');
+    static components = { Cell };
 
-    $route: VueRouter.$route<any, any, Query>;
+    @prop(Boolean)
+    modal: boolean;
 
-    title: string;
-    // songs: Song[];
+    loading: boolean;
+    songs: any[];
 
-    static route: VueRouter.TransitionHook<any, any, any, any, Query> = {
-        // data: function(transition) {
-        //     const { query } = transition.to;
-        //     if (query.title) {
-        //         return SongObject.findByQuery(query).then((songs) => {
-        //             return ({
-        //                 title: query.title,
-        //                 songs: songs.map(({id, attributes}) => Vue.util.extend({ id }, attributes))
-        //             });
-        //         });
-        //     } else {
-        //         transition.next({
-        //             title: '',
-        //             songs: []
-        //         });
-        //     }
-        // }
-    };
+    load() {
+      this.loading = true;
+      setTimeout(() => {
+        this.songs = this.songs.concat([
+          {
+            title: '双頭の鷲の旗の下に',
+            artist: 'ワーグナー',
+            lead: 'ハプスブルグ王朝のオーストリア・ハンガリー帝国を謳った曲'
+          },
+          {
+            title: 'アメリカン・パトロール',
+            artist: 'ミーチャム',
+            lead: 'アメリカ西部の民謡'
+          },
+          {
+            title: '星条旗よ永遠なれ',
+            artist: 'スーザ',
+            lead: 'アメリカ合衆国の公式行進曲'
+          }
+        ]);
+        this.loading = false;
+      }, 500);
+    }
 
-    search() {
-        if (this.title) {
-            this.$route.router.go({ name: 'songs', query: { title: this.title } });
-        } else {
-            this.$route.router.go({ path: '/songs' });
-        }
+    close() {
+      this.modal = false;
     }
 }

@@ -1,0 +1,42 @@
+$primary-color: #FF9800;
+
+@import 'foundation';
+@import 'util/breakpoint';
+@include foundation-global-styles;
+@include foundation-typography-base;
+@include foundation-button;
+@include foundation-forms;
+@include foundation-form-prepostfix;
+
+@import 'components/songs/songs';
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+header {
+  padding: 10px 20px;
+  border-bottom: 1px solid $medium-gray;
+}
+
+main {
+  width: 100%;
+  flex: 1;
+  display: flex;
+}
+
+footer {
+  border-top: 1px solid $medium-gray;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  color: $dark-gray;
+  background-color: $white;
+}

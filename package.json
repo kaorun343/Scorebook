@@ -4,7 +4,9 @@
   "description": "Scorebook Manager",
   "private": true,
   "scripts": {
-    "test": "karma start"
+    "test": "karma start",
+    "build:js": "webpack",
+    "build:css": "node-sass --include-path node_modules/foundation-sites/scss src/style.scss --output ./public"
   },
   "keywords": [],
   "license": "MIT",
@@ -20,6 +22,7 @@
     "karma-sinon": "^1.0.4",
     "karma-webpack": "^1.7.0",
     "mocha": "^2.3.3",
+    "node-sass": "^3.4.2",
     "sinon": "^1.17.1",
     "ts-loader": "^0.7.2",
     "tslint": "^3.2.0",
@@ -27,6 +30,7 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
+    "foundation-sites": "^6.1.2",
     "vue": "^1.0.15",
     "vue-class-component": "^2.0.1",
     "vue-property-decorator": "^2.1.0",
