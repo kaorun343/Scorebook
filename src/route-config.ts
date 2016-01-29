@@ -63,7 +63,7 @@ export function configureRouter(router: VueRouter.Router<App>) {
     });
 
     router.beforeEach(transition => {
-        router.app.auth = Parse.User.current() !== null;
+        // router.app.auth = Parse.User.current() !== null;
         transition.next();
     });
 

@@ -2,9 +2,9 @@
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
 import { App } from '../../../app';
-import { SongObject, Song } from '../../../objects/song';
-import { PartObject, Part } from '../../../objects/part';
-import { VideoObject, Video } from '../../../objects/video';
+// import { SongObject, Song } from '../../../objects/song';
+// import { PartObject, Part } from '../../../objects/part';
+// import { VideoObject, Video } from '../../../objects/video';
 import { SongForm } from '../form/song';
 import { PartsForm } from '../form/parts';
 import { VideosForm } from '../form/videos';
@@ -17,18 +17,18 @@ interface Query {
 @component
 @Data(() => ({
     id: '',
-    song: new Song(),
-    parts: [new Part()],
-    videos: [],
+    // song: new Song(),
+    // parts: [new Part()],
+    // videos: [],
     enableSubmitButton: true
 }))
 export class Create {
     static template = require('./create.html');
     static components = { SongForm, PartsForm, VideosForm };
 
-    song: Song;
-    videos: Video[];
-    parts: Part[];
+    // song: Song;
+    // videos: Video[];
+    // parts: Part[];
     id: string;
 
     enableSubmitButton: boolean;
@@ -63,16 +63,16 @@ export class Create {
             return;
         }
         this.enableSubmitButton = false;
-        const song = new SongObject(this.$refs.song.song);
-        song.set('people', this.$refs.parts.parts.length);
-        song.save<SongObject>().then((song) => {
-            this.id = song.id;
-            return Promise.all([
-                ...PartObject.save(song, this.$refs.parts.parts),
-                ...VideoObject.save(song, this.$refs.videos.videos)
-            ] as any[]);
-        }).then((result: any) => {
-            this.$route.router.go({ name: 'song', params: { id: this.id } });
-        }, (err: any) => { console.error(err); });
+        // const song = new SongObject(this.$refs.song.song);
+        // song.set('people', this.$refs.parts.parts.length);
+        // song.save<SongObject>().then((song) => {
+        //     this.id = song.id;
+        //     return Promise.all([
+        //         ...PartObject.save(song, this.$refs.parts.parts),
+        //         ...VideoObject.save(song, this.$refs.videos.videos)
+        //     ] as any[]);
+        // }).then((result: any) => {
+        //     this.$route.router.go({ name: 'song', params: { id: this.id } });
+        // }, (err: any) => { console.error(err); });
     }
 }

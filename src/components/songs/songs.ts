@@ -1,8 +1,8 @@
 'use strict';
-import Vue = require('vue');
+// import Vue = require('vue');
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
-import { SongObject, Song } from '../../objects/song';
+// import { SongObject, Song } from '../../objects/song';
 
 interface Query {
     title: string;
@@ -13,7 +13,7 @@ interface Query {
 @component
 @Data(() => ({
     title: '',
-    songs: [] as Song[]
+    // songs: [] as Song[]
 }))
 export class Songs {
     static template = require('./songs.html');
@@ -21,25 +21,25 @@ export class Songs {
     $route: VueRouter.$route<any, any, Query>;
 
     title: string;
-    songs: Song[];
+    // songs: Song[];
 
     static route: VueRouter.TransitionHook<any, any, any, any, Query> = {
-        data: function(transition) {
-            const { query } = transition.to;
-            if (query.title) {
-                return SongObject.findByQuery(query).then((songs) => {
-                    return ({
-                        title: query.title,
-                        songs: songs.map(({id, attributes}) => Vue.util.extend({ id }, attributes))
-                    });
-                });
-            } else {
-                transition.next({
-                    title: '',
-                    songs: []
-                });
-            }
-        }
+        // data: function(transition) {
+        //     const { query } = transition.to;
+        //     if (query.title) {
+        //         return SongObject.findByQuery(query).then((songs) => {
+        //             return ({
+        //                 title: query.title,
+        //                 songs: songs.map(({id, attributes}) => Vue.util.extend({ id }, attributes))
+        //             });
+        //         });
+        //     } else {
+        //         transition.next({
+        //             title: '',
+        //             songs: []
+        //         });
+        //     }
+        // }
     };
 
     search() {

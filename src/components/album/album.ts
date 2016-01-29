@@ -1,9 +1,9 @@
 'use strict';
-import Vue = require('vue');
+// import Vue = require('vue');
 import component = require('vue-class-component');
 import { Data } from 'vue-property-decorator';
-import { SongObject } from '../../objects/song';
-import { SongWithId } from '../../objects/song';
+// import { SongObject } from '../../objects/song';
+// import { SongWithId } from '../../objects/song';
 
 interface Params {
     year: string;
@@ -16,7 +16,7 @@ interface Params {
     return {
         year: date.getFullYear(),
         month: date.getMonth() + 1,
-        songs: [] as SongWithId[]
+        // songs: [] as SongWithId[]
     };
 })
 export class Album {
@@ -24,7 +24,7 @@ export class Album {
 
     year: number;
     month: number;
-    songs: SongWithId[];
+    // songs: SongWithId[];
 
     get href(): string {
         return `http://www.ymm.co.jp/magazine/electone/${this.year * 100 + this.month}.php`;
@@ -46,18 +46,18 @@ export class Album {
         return this.month === 1 ? this.year - 1 : this.year;
     }
 
-    static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
-        data: function(transition) {
-            const {year, month} = transition.to.params;
-            const y = Number(year);
-            const m = Number(month);
+    // static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
+    //     data: function(transition) {
+    //         const {year, month} = transition.to.params;
+    //         const y = Number(year);
+    //         const m = Number(month);
 
-            return SongObject.findByAlbum(y, m).then((songs) => {
-                return songs.map((song) => {
-                    const {attributes, id} = song;
-                    return Vue.util.extend({ id }, attributes);
-                });
-            }).then((songs) => ({ songs, year: y, month: m }));
-        }
-    };
+    //         return SongObject.findByAlbum(y, m).then((songs) => {
+    //             return songs.map((song) => {
+    //                 const {attributes, id} = song;
+    //                 return Vue.util.extend({ id }, attributes);
+    //             });
+    //         }).then((songs) => ({ songs, year: y, month: m }));
+    //     }
+    // };
 }

@@ -16,11 +16,11 @@ export class Login {
 
     $route: VueRouter.$route<App, any, any>;
 
-    submit() {
-        Parse.User.logIn<Parse.User>(this.username, this.password).then((user) => {
-            this.$route.router.go('/');
-        });
-    }
+    // submit() {
+    //     Parse.User.logIn<Parse.User>(this.username, this.password).then((user) => {
+    //         this.$route.router.go('/');
+    //     });
+    // }
 
     static route: VueRouter.TransitionHook<App, any, any, any, any> = {
         canActivate: function(transition) {

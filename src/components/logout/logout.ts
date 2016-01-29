@@ -10,7 +10,7 @@ export class Logout {
         canActivate: function(transition) {
             setTimeout(() => {
                 if (transition.to.router.app.auth) {
-                    Parse.User.logOut();
+                    // Parse.User.logOut();
                     transition.next();
                 } else {
                     transition.abort();

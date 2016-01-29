@@ -27,22 +27,22 @@ export class Register {
         return this.password === this.password_confirm;
     }
 
-    submit() {
-        if (!this.canSubmit) {
-            return;
-        }
-        this.canSubmit = false;
-        const user = new Parse.User();
-        user.setUsername(this.username);
-        user.setEmail(this.email, {});
-        user.setPassword(this.password);
-        user.signUp<Parse.User>(null).then(u => {
-            this.$route.router.go({ name: 'login' });
-        }, error => {
-            console.warn(error);
-            this.canSubmit = true;
-        });
-    }
+    // submit() {
+    //     if (!this.canSubmit) {
+    //         return;
+    //     }
+    //     this.canSubmit = false;
+    //     const user = new Parse.User();
+    //     user.setUsername(this.username);
+    //     user.setEmail(this.email, {});
+    //     user.setPassword(this.password);
+    //     user.signUp<Parse.User>(null).then(u => {
+    //         this.$route.router.go({ name: 'login' });
+    //     }, error => {
+    //         console.warn(error);
+    //         this.canSubmit = true;
+    //     });
+    // }
 
     static route: VueRouter.TransitionHook<App, any, any, any, any> = {
         canActivate: function(transition) {

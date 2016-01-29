@@ -27,7 +27,6 @@
     "webpack": "^1.12.9"
   },
   "dependencies": {
-    "parse": "^1.6.9",
     "vue": "^1.0.15",
     "vue-class-component": "^2.0.1",
     "vue-property-decorator": "^2.1.0",
