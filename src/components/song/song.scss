@@ -1,0 +1,30 @@
+.song {
+  padding: 20px;
+  flex: 1;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+
+  h1 {
+    color: $primary-color;
+    border-bottom: 1px solid $primary-color;
+  }
+
+  h3 {
+    border-bottom: 1px solid $dark-gray;
+  }
+
+  table {
+    width: 100%;
+  }
+
+  @include breakpoint(large) {
+    padding: 40px;
+    .song-info-container {
+      display: flex;
+    }
+
+    .song-info-content {
+      flex: 1;
+    }
+  }
+}

@@ -1,11 +1,12 @@
 'use strict';
 import {Store} from 'vuex';
-import {State} from './state';
+import {State, Song} from './state';
 import {Types} from './mutations';
 
 export interface Actions {
     search(text: string): void;
     addSongs(): void;
+    showSong(id: string): void;
 }
 
 const songs = () => ([
@@ -58,5 +59,15 @@ export namespace actions {
             store.dispatch(Types.SET_SONGS, songs());
             store.dispatch(Types.FINISH_SEARCHING_SONGS);
         }, 1000);
+    }
+
+    export function showSong(store: Store<State, Actions>, id: string) {
+        setTimeout(function() {
+            const song = new Song();
+            song.title = 'ワーク・ソング';
+            song.artist = 'ナット・アダレイ';
+            song.grade = '5~4級';
+            store.dispatch(Types.SET_A_SONG, song);
+        }, 500);
     }
 }

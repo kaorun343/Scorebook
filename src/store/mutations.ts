@@ -37,7 +37,11 @@ export const enum Types {
     /**
      * 検索結果のモーダル画面を閉じる
      */
-    CLOSE_MODAL_SONGS
+    CLOSE_MODAL_SONGS,
+    /**
+     * 曲を代入する
+     */
+    SET_A_SONG
 }
 
 export const mutations = {
@@ -67,5 +71,8 @@ export const mutations = {
     },
     [Types.CLOSE_MODAL_SONGS](state: State) {
         state.modals.songs = false;
+    },
+    [Types.SET_A_SONG](state: State, song: Song) {
+        state.song = song;
     }
 };

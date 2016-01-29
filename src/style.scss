@@ -7,8 +7,10 @@ $primary-color: #FF9800;
 @include foundation-button;
 @include foundation-forms;
 @include foundation-form-prepostfix;
+@include foundation-table;
 
 @import 'components/songs/songs';
+@import 'components/song/song';
 
 html, body {
   height: 100%;

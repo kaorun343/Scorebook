@@ -1,46 +1,54 @@
-<div>
-  <h1 v-text="song.title"></h1>
-  <div class="lead" v-text="song.lead"></div>
+<div class="song">
+  <h1>{{song.title}}</h1>
+  <p>{{song.lead}}</p>
 
-  <div>
-    <a v-link="{name: 'edit', params: {id: $route.params.id}}">内容を編集する</a>
-  </div>
-  <hr>
   <section>
-    <h2>基本情報</h2>
-    <table class="table" v-if="!$loadingRouteData">
-      <tbody>
-        <tr>
-          <th scope="1">アーティスト</th><td v-text="song.artist"></td>
-        </tr>
-        <tr>
-          <th scope="2">収録アルバム</th>
-          <td><a v-link="{name: 'album', params: {year: song.year, month: song.month}}">月刊エレクトーン{{song.year}}年{{song.month}}月号</a></td>
-        </tr>
-        <tr>
-          <th scope="3">掲載ページ</th><td>{{song.page}}ページ</td>
-        </tr>
-        <tr>
-          <th scope="4">種類</th><td v-text="song.type"></td>
-        </tr>
-        <tr>
-          <th scope="5">難易度</th><td v-text="song.grade"></td>
-        </tr>
-        <tr>
-          <th scope="6">人数</th><td>{{song.people}}人</td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>基本情報</h3>
+    <div class="song-info-container">
+      <div class="song-info-content">
+        <dl>
+          <dt>アーティスト</dt>
+          <dd>{{song.artist}}</dd>
+        </dl>
+        <dl>
+          <dt>収録アルバム</dt>
+          <dd>月刊エレクトーン{{song.year}}年{{song.month}}月号</dd>
+        </dl>
+        <dl>
+          <dt>掲載ページ</dt>
+          <dd>{{song.page}}ページ</dd>
+        </dl>
+      </div>
+      <div class="song-info-content">
+        <dl>
+          <dt>種類</dt>
+          <dd>ソロ・アレンジ・スコア</dd>
+        </dl>
+        <dl>
+          <dt>難易度</dt>
+          <dd>{{song.grade}}</dd>
+        </dl>
+        <dl>
+          <dt>人数</dt>
+          <dd>1人</dd>
+        </dl>
+      </div>
+    </div>
   </section>
-  <hr>
   <section>
-    <h2>パート情報</h2>
-    <table class="table">
+    <h3>パート情報</h3>
+    <table>
       <thead>
-        <tr><th>種類</th><th>上鍵盤</th><th>下鍵盤</th><th>ペダル鍵盤</th><th>リズム</th></tr>
+        <tr>
+          <th>楽器</th>
+          <th>上鍵盤</th>
+          <th>下鍵盤</th>
+          <th>ペダル鍵盤</th>
+          <th>リズム</th>
+        </tr>
       </thead>
       <tbody>
-        <tr v-for="part in parts" track-by="id">
+        <tr v-for="part in song.parts">
           <td>{{part.type}}</td>
           <td>{{part.upper | exist}}</td>
           <td>{{part.lower | exist}}</td>
@@ -50,20 +58,7 @@
       </tbody>
     </table>
   </section>
-  <hr>
   <section>
-    <h2>関連動画</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>タイトル</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="video in videos">
-          <td><a :href="video.url" target="_blank" track-by="id" v-text="video.title"></a></td>
-        </tr>
-      </tbody>
-    </table>
+    <h3>関連動画</h3>
   </section>
 </div>

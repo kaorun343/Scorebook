@@ -3,11 +3,17 @@ import {types, grades} from '../constants/constants';
 
 export class Part {
     type: string;
-    keyboards: string[];
+    upper: boolean;
+    lower: boolean;
+    pedal: boolean;
+    rhythm: boolean;
 
     constructor() {
         this.type = 'エレクトーン';
-        this.keyboards = ['上鍵盤', '下鍵盤', 'ペダル鍵盤', 'リズム'];
+        this.upper = true;
+        this.lower = true;
+        this.pedal = true;
+        this.rhythm = true;
     }
 }
 
@@ -42,17 +48,21 @@ export class Song {
 
         const date = new Date();
         this.year = date.getFullYear();
-        this.month = date.getMonth();
+        this.month = date.getMonth() + 1;
 
         this.page = 1;
         this.type = types[0];
         this.grade = grades[0];
         this.people = 1;
+
+        this.parts = [new Part(), new Part()];
+        this.videos = [];
     }
 }
 
 export class State {
-    songs: Song[] = [];
+    songs = [] as Song[];
+    song = new Song();
     loading = false;
     searchtext = '';
     modals = {
