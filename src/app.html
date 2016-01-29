@@ -2,14 +2,14 @@
   <header>
     <h1 id="title">楽譜管理</h1>
     <div class="input-group">
-      <input type="text" class="input-group-field" placeholder="キーワード">
+      <input type="text" class="input-group-field" v-model="text" placeholder="キーワード">
       <div class="input-group-button">
         <input type="button" class="button" value="検索" @click="search">
       </div>
     </div>
   </header>
   <main>
-    <songs :modal.sync="modal"></songs>
+    <songs></songs>
     <router-view></router-view>
   </main>
   <footer>

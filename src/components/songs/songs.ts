@@ -1,48 +1,32 @@
 'use strict';
 import VueComponent = require('vue-class-component');
-import { Data, prop } from 'vue-property-decorator';
 import { Cell } from './cell';
+import { store } from '../../store/store';
+import { Types } from '../../store/mutations';
 
 @VueComponent
-@Data(() => ({
-  loading: false,
-  songs: [] as any[]
-}))
 export class Songs {
     static template = require('./songs.html');
     static components = { Cell };
 
-    @prop(Boolean)
-    modal: boolean;
+    get modal() {
+        return store.state.modals.songs;
+    }
 
-    loading: boolean;
-    songs: any[];
+
+    get loading() {
+        return store.state.loading;
+    }
+
+    get songs() {
+        return store.state.songs;
+    }
 
     load() {
-      this.loading = true;
-      setTimeout(() => {
-        this.songs = this.songs.concat([
-          {
-            title: '双頭の鷲の旗の下に',
-            artist: 'ワーグナー',
-            lead: 'ハプスブルグ王朝のオーストリア・ハンガリー帝国を謳った曲'
-          },
-          {
-            title: 'アメリカン・パトロール',
-            artist: 'ミーチャム',
-            lead: 'アメリカ西部の民謡'
-          },
-          {
-            title: '星条旗よ永遠なれ',
-            artist: 'スーザ',
-            lead: 'アメリカ合衆国の公式行進曲'
-          }
-        ]);
-        this.loading = false;
-      }, 500);
+        store.actions.addSongs();
     }
 
     close() {
-      this.modal = false;
+      store.dispatch(Types.CLOSE_MODAL_SONGS);
     }
 }

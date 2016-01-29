@@ -4,7 +4,7 @@
     <div @click="close">閉じる</div>
   </div>
   <div class="songs" @click.stop>
-    <cell v-for="song in songs" :title="song.title" :artist="song.artist" :lead="song.lead" @click.stop="close"></cell>
+    <cell v-for="song in songs" :song="song" @click.stop="close"></cell>
     <div class="button-wrapper">
       <button type="button" class="button expanded brand" :disabled="loading" @click.stop="load">
         さらに読み込む
