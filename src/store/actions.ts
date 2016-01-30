@@ -16,7 +16,8 @@ const songs = () => ([
         lead: 'ハプスブルグ王朝のオーストリア・ハンガリー帝国を謳った曲',
         year: 2007,
         month: 1,
-        grade: '6級'
+        grade: '6級',
+        id: 200701
     },
     {
         title: 'アメリカン・パトロール',
@@ -24,7 +25,8 @@ const songs = () => ([
         lead: 'アメリカ西部の民謡',
         year: 2008,
         month: 2,
-        grade: '7級'
+        grade: '7級',
+        id: 200802
     },
     {
         title: '星条旗よ永遠なれ',
@@ -32,7 +34,8 @@ const songs = () => ([
         lead: 'アメリカ合衆国の公式行進曲',
         year: 2009,
         month: 3,
-        grade: '5級'
+        grade: '5級',
+        id: 200903
     }
 ]);
 

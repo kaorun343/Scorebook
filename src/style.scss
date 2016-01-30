@@ -32,6 +32,13 @@ main {
   width: 100%;
   flex: 1;
   display: flex;
+
+  & > .router-view {
+    padding: 20px;
+    flex: 1;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 
 footer {

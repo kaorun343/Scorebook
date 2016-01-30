@@ -1,6 +1,6 @@
 <div>
   <header>
-    <h1 id="title">楽譜管理</h1>
+    <h1 id="title"><a v-link="{name: 'top'}">楽譜管理</a></h1>
     <div class="input-group">
       <input type="text" class="input-group-field" v-model="text" placeholder="キーワード">
       <div class="input-group-button">
@@ -10,7 +10,7 @@
   </header>
   <main>
     <songs></songs>
-    <router-view></router-view>
+    <div class="router-view"><router-view></router-view></div>
   </main>
   <footer>
     <div>Copyright 2016 kaorun343</div>
