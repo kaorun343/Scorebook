@@ -21,6 +21,6 @@
         "node_modules"
     ],
     "atom": {
-        "rewriteTsconfig": true
+        "rewriteTsconfig": false
     }
 }
