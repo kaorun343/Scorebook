@@ -11,7 +11,7 @@
         "noImplicitAny": true,
         "removeComments": false,
         "noLib": false,
-        "preserveConstEnums": true,
+        "preserveConstEnums": false,
         "suppressImplicitAnyIndexErrors": true,
         "rootDir": "src",
         "outDir": "dist"
