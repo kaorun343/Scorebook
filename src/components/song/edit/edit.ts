@@ -7,9 +7,9 @@ import { App } from '../../../app';
 // import { SongObject, Song, SongWithId } from '../../../objects/song';
 // import { PartObject, PartWithId } from '../../../objects/part';
 // import { VideoObject, VideoWithId } from '../../../objects/video';
-import { SongForm } from '../form/song';
-import { PartsForm } from '../form/parts';
-import { VideosForm } from '../form/videos';
+// import { SongForm } from '../form/song';
+// import { PartsForm } from '../form/parts';
+// import { VideosForm } from '../form/videos';
 
 interface Params {
     id: string;
@@ -24,7 +24,7 @@ interface Params {
 }))
 export class Edit {
     static template = require('./edit.html');
-    static components = { SongForm, PartsForm, VideosForm };
+    // static components = { SongForm, PartsForm, VideosForm };
 
     // song: SongWithId;
     // parts: PartWithId[];
@@ -32,11 +32,11 @@ export class Edit {
 
     enableSubmitButton: boolean;
 
-    $refs: {
-        song: SongForm;
-        parts: PartsForm;
-        videos: VideosForm;
-    };
+    // $refs: {
+    //     song: SongForm;
+    //     parts: PartsForm;
+    //     videos: VideosForm;
+    // };
 
     $route: VueRouter.$route<App, any, any>;
 

@@ -1,0 +1,70 @@
+<div>
+  <section>
+    <h3>基本情報</h3>
+    <div class="flex-container-middle">
+      <fieldset class="flex-content flex-content-gutter-middle">
+        <label for="year">発売年</label>
+        <input type="number" name="year" id="year" number v-model="song.year | year" min="1971">
+      </fieldset>
+      <fieldset class="flex-content flex-content-gutter-middle">
+        <label for="month">発売月</label>
+        <input type="number" name="month" id="month" number v-model="song.month | month" min="1" max="12">
+      </fieldset>
+      <fieldset class="flex-content flex-content-gutter-middle">
+        <label for="page">掲載ページ</label>
+        <input type="number" name="page" id="page" v-model="song.page | page" number min="1">
+      </fieldset>
+    </div>
+
+    <fieldset>
+      <label for="title">曲名</label>
+      <input type="text" id="title" name="title" v-model="song.title">
+    </fieldset>
+
+    <fieldset>
+      <label for="artist">アーティスト</label>
+      <input type="text" id="artist" name="song.artist" v-model="song.artist">
+    </fieldset>
+
+    <fieldset>
+      <label for="lead">リード文</label>
+      <input type="text" id="lead" name="song.lead" v-model="song.lead">
+    </fieldset>
+
+    <div class="flex-container-middle">
+
+    <fieldset class="flex-content flex-content-gutter-middle">
+      <label for="grade">難易度</label>
+      <select name="grade" id="grade" v-model="song.grade">
+        <option v-for="item in grades" :value="item">{{item}}</option>
+      </select>
+    </fieldset>
+      <fieldset class="flex-content flex-content-gutter-middle">
+        <label for="people">エレクトーン</label>
+        <input type="number" name="people" id="people" v-model="song.people | page" number min="1">
+      </fieldset>
+
+      <fieldset class="flex-content flex-content-gutter-middle">
+        <label for="piano">ピアノ</label>
+        <select name="type" id="type" v-model="song.piano">
+          <option :value="true">あり</option>
+          <option :value="false">なし</option>
+        </select>
+      </fieldset>
+    </div>
+  </section>
+  <section>
+    <h3>パート情報（エレクトーン）</h3>
+    <fieldset class="fieldset" v-for="part in song.parts">
+      <legend>パート {{$index + 1}}</legend>
+      <input id="upper-{{$index+1}}" type="checkbox" v-model="part.upper">
+      <label for="upper-{{$index+1}}">上鍵盤</label>
+      <input id="lower-{{$index+1}}" type="checkbox" v-model="part.lower">
+      <label for="lower-{{$index+1}}">下鍵盤</label>
+      <input id="pedal-{{$index+1}}" type="checkbox" v-model="part.pedal">
+      <label for="pedal-{{$index+1}}">ペダル鍵盤</label>
+      <input id="rhythm-{{$index+1}}" type="checkbox" v-model="part.rhythm">
+      <label for="rhythm-{{$index+1}}">リズム</label>
+    </fieldset>
+  </section>
+</div>

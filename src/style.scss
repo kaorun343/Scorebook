@@ -49,3 +49,41 @@ footer {
   color: $dark-gray;
   background-color: $white;
 }
+
+.flex-container {
+  display: flex;
+}
+
+.flex-container-middle {
+  display: block;
+  @include breakpoint(768px) {
+    display: flex;
+  }
+}
+
+.flex-content {
+  flex: 1;
+}
+
+.flex-content-gutter {
+  &:not(:first-child) {
+    padding-left: 10px;
+  }
+
+  &:not(:last-child) {
+    padding-right: 10px;
+  }
+}
+
+.flex-content-gutter-middle {
+
+  @include breakpoint(768px) {
+     &:not(:first-child) {
+        padding-left: 10px;
+    }
+
+    &:not(:last-child) {
+        padding-right: 10px;
+    }
+  }
+}

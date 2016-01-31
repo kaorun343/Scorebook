@@ -21,26 +21,26 @@
       </div>
       <div class="song-info-content">
         <dl>
-          <dt>種類</dt>
-          <dd>ソロ・アレンジ・スコア</dd>
-        </dl>
-        <dl>
           <dt>難易度</dt>
           <dd>{{song.grade}}</dd>
         </dl>
         <dl>
-          <dt>人数</dt>
-          <dd>1人</dd>
+          <dt>エレクトーンの台数</dt>
+          <dd>{{song.people}}台</dd>
+        </dl>
+        <dl>
+          <dt>ピアノ</dt>
+          <dd>{{song.piano | exist}}</dd>
         </dl>
       </div>
     </div>
   </section>
   <section>
-    <h3>パート情報</h3>
+    <h3>パート情報（エレクトーン）</h3>
     <table>
       <thead>
         <tr>
-          <th>楽器</th>
+          <th>パート</th>
           <th>上鍵盤</th>
           <th>下鍵盤</th>
           <th>ペダル鍵盤</th>
@@ -49,7 +49,7 @@
       </thead>
       <tbody>
         <tr v-for="part in song.parts">
-          <td>{{part.type}}</td>
+          <td>{{$index + 1}}</td>
           <td>{{part.upper | exist}}</td>
           <td>{{part.lower | exist}}</td>
           <td>{{part.pedal | exist}}</td>

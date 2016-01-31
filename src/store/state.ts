@@ -1,15 +1,13 @@
 'use strict';
-import {types, grades} from '../constants/constants';
+import {grades} from '../constants/constants';
 
 export class Part {
-    type: string;
     upper: boolean;
     lower: boolean;
     pedal: boolean;
     rhythm: boolean;
 
     constructor() {
-        this.type = 'エレクトーン';
         this.upper = true;
         this.lower = true;
         this.pedal = true;
@@ -34,7 +32,7 @@ export class Song {
     year: number;
     month: number;
     page: number;
-    type: string;
+    piano: boolean;
     grade: string;
     people: number;
     id: string;
@@ -51,11 +49,11 @@ export class Song {
         this.month = date.getMonth() + 1;
 
         this.page = 1;
-        this.type = types[0];
         this.grade = grades[0];
         this.people = 1;
+        this.piano = false;
 
-        this.parts = [new Part(), new Part()];
+        this.parts = [new Part()];
         this.videos = [];
     }
 }
