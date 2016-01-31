@@ -1,12 +1,12 @@
-<div class="songs-wrapper" :class="{'show': modal}" @click="close">
-  <div class="songs-modal-header flex-container" @click.stop>
+<div class="songs-wrapper" :class="{'show': modal}" @click.self="close">
+  <div class="songs-modal-header flex-container">
     <h2 class="flex-content">検索結果</h2>
     <div @click="close">閉じる</div>
   </div>
-  <div class="songs" @click.stop>
-    <cell v-for="song in songs" :song="song" @click.stop="close"></cell>
+  <div class="songs">
+    <cell v-for="song in songs" :song="song" @click="close"></cell>
     <div class="button-wrapper">
-      <button type="button" class="button expanded brand" :disabled="loading" @click.stop="load">
+      <button type="button" class="button expanded brand" :disabled="loading" @click="load">
         さらに読み込む
       </button>
     </div>

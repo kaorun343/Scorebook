@@ -1,13 +1,12 @@
 'use strict';
 import VueComponent = require('vue-class-component');
-import {prop} from 'vue-property-decorator';
 import {Song} from '../../store/state';
 
 @VueComponent({
+    props: ['song'],
     template: require('./cell.html')
 })
 export class Cell {
-  @prop(Object)
   song: Song;
 
   clicked() {

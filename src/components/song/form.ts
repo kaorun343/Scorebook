@@ -1,7 +1,7 @@
 'use strict';
 import component = require('vue-class-component');
 import { Song, Part } from '../../store/state';
-import { prop, Data, watch } from 'vue-property-decorator';
+import { Data } from 'vue-property-decorator';
 import { grades } from '../../constants/constants';
 
 @component({
@@ -16,18 +16,24 @@ import { grades } from '../../constants/constants';
         page: {
             write: (value: number) => (value < 1 ? 1 : value)
         }
+    },
+    props: {
+        song: {
+            type: Object,
+            default: () => (new Song())
+        }
+    },
+    watch: {
+        'song.people': 'peopleChanged'
     }
 })
 @Data(() => ({
     grades
 }))
 export class SongForm {
-    @prop({ type: Object, default: () => (new Song()) })
     song: Song;
-
     grades: string[];
 
-    @watch('song.people')
     peopleChanged(val: number, oldVal: number) {
         console.log(val, oldVal);
         if (val > oldVal) {

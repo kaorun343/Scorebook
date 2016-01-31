@@ -12,7 +12,7 @@ declare namespace vuejs {
     interface PropOption {
         type?: any;
         required?: boolean;
-        default?: boolean;
+        default?: boolean | number | string | (() => any);
         twoWay?: boolean;
         validator?(value: any): boolean;
     }
@@ -63,7 +63,7 @@ declare namespace vuejs {
         props?: string[] | { [key: string]: PropOption };
         computed?: { [key: string]: (Function | ComputedOption) };
         methods?: { [key: string]: Function };
-        watch?: { [key: string]: ((val: any, oldVal: any) => void | string | WatchOption) };
+        watch?: { [key: string]: ((val: any, oldVal: any) => void) | string | WatchOption };
         el?: string | HTMLElement | (() => HTMLElement);
         template?: string;
         replace?: boolean;

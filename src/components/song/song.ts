@@ -10,16 +10,15 @@ interface Params {
     template: require('./song.html'),
     filters: {
         exist: (value: number) => (value ? 'あり' : 'なし')
-    }
-})
-export class Song {
-    static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
-        data(transition) {
+    },
+    route: {
+        data(transition: VueRouter.Transition<any, any, any, Params, any>) {
             const { id } = transition.to.params;
             store.actions.showSong(id);
         }
-    };
-
+    }
+})
+export class Song {
     get song() {
         return store.state.song;
     }
