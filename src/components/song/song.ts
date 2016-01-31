@@ -6,13 +6,13 @@ interface Params {
     id: string;
 }
 
-@component
+@component({
+    template: require('./song.html'),
+    filters: {
+        exist: (value: number) => (value ? 'あり' : 'なし')
+    }
+})
 export class Song {
-    static template = require('./song.html');
-    static filters = {
-        exist: (value: boolean) => (value ? 'あり' : 'なし')
-    };
-
     static route: VueRouter.TransitionHook<any, any, any, Params, any> = {
         data(transition) {
             const { id } = transition.to.params;

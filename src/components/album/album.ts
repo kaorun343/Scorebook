@@ -10,7 +10,7 @@ interface Params {
     month: string;
 }
 
-@component
+@component({})
 @Data(() => {
     const date = new Date();
     return {

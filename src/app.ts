@@ -4,14 +4,14 @@ import {Data} from 'vue-property-decorator';
 import {Songs} from './components/songs/songs';
 import {store} from './store/store';
 
-@component
+@component({
+    template: require('./app.html'),
+    components: { Songs }
+})
 @Data(() => ({
     text: ''
 }))
 export class App {
-    static template = require('./app.html');
-    static components = { Songs };
-
     text: string;
 
     search() {
@@ -19,6 +19,4 @@ export class App {
             store.actions.search(this.text);
         }
     }
-
-    auth: boolean;
 }

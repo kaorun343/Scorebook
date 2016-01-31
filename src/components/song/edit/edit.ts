@@ -15,7 +15,7 @@ interface Params {
     id: string;
 }
 
-@component
+@component({})
 @Data(() => ({
     // song: new Song,
     // parts: [],
@@ -57,7 +57,7 @@ export class Edit {
         //     });
         // },
         canActivate: function(transition) {
-            return transition.to.router.app.auth;
+            // return transition.to.router.app.auth;
         }
     };
 

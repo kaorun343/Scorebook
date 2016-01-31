@@ -1,7 +1,8 @@
 'use strict';
 import VueComponent = require('vue-class-component');
 
-@VueComponent
+@VueComponent({
+    template: require('./top.html')
+})
 export class Top {
-    static template = require('./top.html');
 }

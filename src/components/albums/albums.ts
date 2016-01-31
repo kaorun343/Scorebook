@@ -8,7 +8,7 @@ interface Params {
     year: string;
 }
 
-@component
+@component({})
 @Data(() => ({ year: (new Date().getFullYear()) }))
 export class Albums {
     static template = require('./albums.html');

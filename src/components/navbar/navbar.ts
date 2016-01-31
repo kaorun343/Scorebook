@@ -2,7 +2,7 @@
 import component = require('vue-class-component');
 import { prop } from 'vue-property-decorator';
 
-@component
+@component({})
 export class Navbar {
     static template = require('./navbar.html');
 

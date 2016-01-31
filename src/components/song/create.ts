@@ -2,11 +2,11 @@
 import VueComponent = require('vue-class-component');
 import {SongForm} from './form';
 
-@VueComponent
+@VueComponent({
+    template: require('./create.html'),
+    components: { SongForm }
+})
 export class Create {
-    static template = require('./create.html');
-    static components = { SongForm };
-
     $refs: {
         form: SongForm
     };

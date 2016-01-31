@@ -41,8 +41,8 @@ declare namespace vuejs {
     }
 
     interface FilterOption {
-        read: Function;
-        write: Function;
+        read?: Function;
+        write?: Function;
     }
 
     interface TransitionOption {
@@ -79,7 +79,7 @@ declare namespace vuejs {
         directives?: { [key: string]: (DirectiveOption | Function) };
         elementDirectives?: { [key: string]: (DirectiveOption | Function) };
         filters?: { [key: string]: (Function | FilterOption) };
-        components?: { [key: string]: ComponentOption };
+        components?: { [key: string]: any };
         transitions?: { [key: string]: TransitionOption };
         partials?: { [key: string]: string };
         parent?: Vue;

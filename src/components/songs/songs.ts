@@ -4,15 +4,14 @@ import { Cell } from './cell';
 import { store } from '../../store/store';
 import { Types } from '../../store/mutations';
 
-@VueComponent
+@VueComponent({
+    template: require('./songs.html'),
+    components: { Cell }
+})
 export class Songs {
-    static template = require('./songs.html');
-    static components = { Cell };
-
     get modal() {
         return store.state.modals.songs;
     }
-
 
     get loading() {
         return store.state.loading;

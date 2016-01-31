@@ -4,14 +4,9 @@ import { Song, Part } from '../../store/state';
 import { prop, Data, watch } from 'vue-property-decorator';
 import { grades } from '../../constants/constants';
 
-@component
-@Data(() => ({
-    grades
-}))
-export class SongForm {
-    static template = require('./form.html');
-
-    static filters = {
+@component({
+    template: require('./form.html'),
+    filters: {
         year: {
             write: (value: number) => (value < 1971 ? 1971 : value)
         },
@@ -21,8 +16,12 @@ export class SongForm {
         page: {
             write: (value: number) => (value < 1 ? 1 : value)
         }
-    };
-
+    }
+})
+@Data(() => ({
+    grades
+}))
+export class SongForm {
     @prop({ type: Object, default: () => (new Song()) })
     song: Song;
 
