@@ -1,10 +1,25 @@
 'use strict';
 import {grades} from '../constants/constants';
 
+/**
+ * パート（エレクトーンのみ）
+ */
 export class Part {
+    /**
+     * 上鍵盤があるかどうか
+     */
     upper: boolean;
+    /**
+     * 下鍵盤があるかどうか
+     */
     lower: boolean;
+    /**
+     * ペダル鍵盤があるかどうか
+     */
     pedal: boolean;
+    /**
+     * リズム担当であるかどうか
+     */
     rhythm: boolean;
 
     constructor() {
@@ -15,8 +30,17 @@ export class Part {
     }
 }
 
+/**
+ * 関連動画
+ */
 export class Video {
+    /**
+     * 動画のタイトル
+     */
     title: string;
+    /**
+     * 動画のURLまたはID
+     */
     url: string;
 
     constructor() {
@@ -25,18 +49,57 @@ export class Video {
     }
 }
 
+/**
+ * 曲
+ */
 export class Song {
+    /**
+     * 一意なID
+     */
+    _id: string;
+    /**
+     * 曲のタイトル
+     */
     title: string;
+    /**
+     * 紹介文
+     */
     lead: string;
+    /**
+     * アーティスト
+     */
     artist: string;
+    /**
+     * 発売年
+     */
     year: number;
+    /**
+     * 発売月
+     */
     month: number;
+    /**
+     * 掲載ページ
+     */
     page: number;
+    /**
+     * ピアノパートがあるかどうか
+     */
     piano: boolean;
+    /**
+     * 難易度
+     */
     grade: string;
+    /**
+     * エレクトーンの台数
+     */
     people: number;
-    id: string;
+    /**
+     * エレクトーンの各パート
+     */
     parts: Part[];
+    /**
+     * 関連動画
+     */
     videos: Video[];
 
     constructor() {
@@ -59,10 +122,25 @@ export class Song {
 }
 
 export class State {
+    /**
+     * 検索結果を格納する
+     */
     songs = [] as Song[];
+    /**
+     * 詳細表示をする曲
+     */
     song = new Song();
+    /**
+     * 検索結果を取得中であるかどうか
+     */
     loading = false;
+    /**
+     * 検索ボックスの文字列
+     */
     searchtext = '';
+    /**
+     * モーダル画面が開いているかどうか
+     */
     modals = {
         songs: false
     };
