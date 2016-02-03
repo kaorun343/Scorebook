@@ -1,14 +1,14 @@
 'use strict';
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { Data } from 'vue-property-decorator';
-import { App } from '../../app';
+import App from '../../app';
 import { Pagination } from './pagination';
 
 interface Params {
     year: string;
 }
 
-@component({})
+@Component({})
 @Data(() => ({ year: (new Date().getFullYear()) }))
 export class Albums {
     static template = require('./albums.html');

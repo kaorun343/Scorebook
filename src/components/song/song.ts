@@ -1,12 +1,12 @@
 'use strict';
-import component = require('vue-class-component');
-import {store} from '../../store/store';
+import Component from 'vue-class-component';
+import store from '../../store/store';
 
 interface Params {
     id: string;
 }
 
-@component({
+@Component({
     template: require('./song.html'),
     filters: {
         exist: (value: number) => (value ? 'あり' : 'なし')
@@ -18,7 +18,7 @@ interface Params {
         }
     }
 })
-export class Song {
+export default class Song {
     get song() {
         return store.state.song;
     }

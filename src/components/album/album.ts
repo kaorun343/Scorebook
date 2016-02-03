@@ -1,6 +1,6 @@
 'use strict';
 // import Vue = require('vue');
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { Data } from 'vue-property-decorator';
 // import { SongObject } from '../../objects/song';
 // import { SongWithId } from '../../objects/song';
@@ -10,7 +10,7 @@ interface Params {
     month: string;
 }
 
-@component({})
+@Component({})
 @Data(() => {
     const date = new Date();
     return {

@@ -1,8 +1,8 @@
 'use strict';
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { prop } from 'vue-property-decorator';
 
-@component({})
+@Component({})
 export class Navbar {
     static template = require('./navbar.html');
 

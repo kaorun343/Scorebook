@@ -1,18 +1,20 @@
 'use strict';
-import component = require('vue-class-component');
-import {Data} from 'vue-property-decorator';
-import {Songs} from './components/songs/songs';
-import {store} from './store/store';
+import Component from 'vue-class-component';
+import Songs from './components/songs/songs';
+import store from './store/store';
 
-@component({
+@Component({
     template: require('./app.html'),
-    components: { Songs }
+    components: { Songs: Songs }
 })
-@Data(() => ({
-    text: ''
-}))
-export class App {
+export default class App {
     text: string;
+
+    data(): any {
+        return {
+            text: ''
+        };
+    }
 
     search() {
         if (this.text.length) {

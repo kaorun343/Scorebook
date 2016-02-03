@@ -1,14 +1,14 @@
 'use strict';
-import VueComponent = require('vue-class-component');
-import { Cell } from './cell';
-import { store } from '../../store/store';
+import Component from 'vue-class-component';
+import Cell from './cell';
+import store from '../../store/store';
 import { Types } from '../../store/mutations';
 
-@VueComponent({
+@Component({
     template: require('./songs.html'),
-    components: { Cell }
+    components: { Cell: Cell }
 })
-export class Songs {
+export default class Songs {
     get modal() {
         return store.state.modals.songs;
     }

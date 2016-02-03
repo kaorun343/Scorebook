@@ -1,8 +1,8 @@
 'use strict';
-import component = require('vue-class-component');
-import { App } from '../../app';
+import Component from 'vue-class-component';
+import App from '../../app';
 
-@component({})
+@Component({})
 export class Logout {
     static template = require('./logout.html');
 

@@ -1,8 +1,8 @@
 'use strict';
-import VueComponent = require('vue-class-component');
+import Component from 'vue-class-component';
 
-@VueComponent({
+@Component({
     template: require('./top.html')
 })
-export class Top {
+export default class Top {
 }

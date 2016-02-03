@@ -1,10 +1,9 @@
 'use strict';
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { Song, Part } from '../../store/state';
-import { Data } from 'vue-property-decorator';
 import { grades } from '../../constants/constants';
 
-@component({
+@Component({
     template: require('./form.html'),
     filters: {
         year: {
@@ -27,12 +26,15 @@ import { grades } from '../../constants/constants';
         'song.people': 'peopleChanged'
     }
 })
-@Data(() => ({
-    grades
-}))
-export class SongForm {
+export default class SongForm {
     song: Song;
     grades: string[];
+
+    data(): any {
+        return {
+            grades
+        };
+    }
 
     peopleChanged(val: number, oldVal: number) {
         console.log(val, oldVal);

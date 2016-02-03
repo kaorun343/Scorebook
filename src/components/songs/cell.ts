@@ -1,12 +1,12 @@
 'use strict';
-import VueComponent = require('vue-class-component');
+import Component from 'vue-class-component';
 import {Song} from '../../store/state';
 
-@VueComponent({
+@Component({
     props: ['song'],
     template: require('./cell.html')
 })
-export class Cell {
+export default class Cell {
   song: Song;
 
   clicked() {

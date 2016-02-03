@@ -1,9 +1,9 @@
 'use strict';
 // import Vue = require('vue');
 // const _ = Vue.util;
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { Data } from 'vue-property-decorator';
-import { App } from '../../../app';
+import App from '../../../app';
 // import { SongObject, Song, SongWithId } from '../../../objects/song';
 // import { PartObject, PartWithId } from '../../../objects/part';
 // import { VideoObject, VideoWithId } from '../../../objects/video';
@@ -15,7 +15,7 @@ interface Params {
     id: string;
 }
 
-@component({})
+@Component({})
 @Data(() => ({
     // song: new Song,
     // parts: [],

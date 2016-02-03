@@ -1,8 +1,8 @@
 'use strict';
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { prop } from 'vue-property-decorator';
 
-@component({})
+@Component({})
 export class Pagination {
 
     static template = require('./pagination.html');

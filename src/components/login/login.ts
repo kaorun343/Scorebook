@@ -1,9 +1,9 @@
 'use strict';
-import component = require('vue-class-component');
+import Component from 'vue-class-component';
 import { Data } from 'vue-property-decorator';
-import { App } from '../../app';
+import App from '../../app';
 
-@component({})
+@Component({})
 @Data(() => ({
     username: '',
     password: ''

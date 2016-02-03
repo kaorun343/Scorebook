@@ -1,12 +1,12 @@
 'use strict';
-import VueComponent = require('vue-class-component');
-import {SongForm} from './form';
+import Component from 'vue-class-component';
+import SongForm from './form';
 
-@VueComponent({
+@Component({
     template: require('./create.html'),
     components: { SongForm }
 })
-export class Create {
+export default class Create {
     $refs: {
         form: SongForm
     };
