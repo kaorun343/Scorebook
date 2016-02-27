@@ -1,12 +1,12 @@
 {
-  "name": "Scorebook",
+  "name": "scorebook",
   "version": "0.0.1",
   "description": "Scorebook Manager",
   "private": true,
   "scripts": {
     "test": "karma start",
     "build:js": "webpack",
-    "build:css": "node-sass --include-path node_modules/foundation-sites/scss src/style.scss --output ./public"
+    "build:css": "node-sass --include-path node_modules/foundation-sites/scss src/style.scss --output ./public --output-style expanded"
   },
   "keywords": [],
   "license": "MIT",

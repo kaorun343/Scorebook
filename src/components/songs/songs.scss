@@ -1,4 +1,4 @@
-.songs-wrapper {
+.songs {
   display: none;
   position: fixed;
   background-color: $reveal-overlay-background;
@@ -8,11 +8,6 @@
   left: 0;
   padding: 30px;
   z-index: $reveal-zindex;
-
-  &.show {
-    display: flex;
-    flex-direction: column;
-  }
 
   @include breakpoint(768px) {
     border-right: 1px solid $medium-gray;
@@ -30,67 +25,67 @@
     width: 384px;
   }
 
-  .button-wrapper {
-     padding: 20px 20px;
-  }
-}
-
-.songs-modal-header {
-  background-color: $white;
-  border-bottom: 1px solid $medium-gray;
-  padding: 10px 20px;
-  display: flex;
-  height: 80px;
-
-  @include breakpoint(768px) {
-    display: none !important;
+  &--show {
+    display: flex;
+    flex-direction: column;
   }
 
-  h2 {
-    flex: 1;
-  }
-}
+  &__header {
+    background-color: $white;
+    border-bottom: 1px solid $medium-gray;
+    padding: 10px 20px;
+    display: flex;
+    height: 80px;
 
-.songs {
-  background-color: $white;
-  height: 100%;
-  overflow-y: scroll;
-  -webkit-overflow-scrolling: touch;
+    @include breakpoint(768px) {
+      display: none !important;
+    }
 
-  @include breakpoint(768px) {
-    overflow-y: auto;
-  }
-}
-
-
-.song-cell {
-  display: block;
-  text-decoration: none;
-  padding: 20px 20px;
-
-  border-bottom: 1px solid $light-gray;
-
-  .year {
-    font-size: 16px;
-    color: #777;
+    h2 {
+      flex: 1;
+    }
   }
 
-  .lead {
-    font-size: 16px;
-    color: #999;
+  &__inner {
+    background-color: $white;
+    height: 100%;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+
+    @include breakpoint(768px) {
+      overflow-y: auto;
+    }
   }
 
-  .title {
-    color: $primary-color;
-    font-size: 24px;
-  }
+  &__cell {
+    display: block;
+    text-decoration: none;
+    padding: 20px 20px;
 
-  .artist {
-    color: #777;
-    font-size: 16px;
-  }
+    border-bottom: 1px solid $light-gray;
 
-  &:hover, &.v-link-active {
-    background-color: lighten($color: $primary-color, $amount: 40%);
+    .year {
+      font-size: 16px;
+      color: #777;
+    }
+
+    .lead {
+      font-size: 16px;
+      color: #999;
+    }
+
+    .title {
+      color: $primary-color;
+      font-size: 24px;
+    }
+
+    .artist {
+      color: #777;
+      font-size: 16px;
+    }
+
+    &:hover, &.v-link-active {
+      background-color: lighten($color: $primary-color, $amount: 40%);
+    }
   }
 }
