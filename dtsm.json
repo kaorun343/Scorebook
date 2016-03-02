@@ -30,6 +30,12 @@
     },
     "twitter/twitter.d.ts": {
       "ref": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+    },
+    "vue/vue.d.ts": {
+      "ref": "4ba57e605bd71bf7248de65aac0b4f50e3eb1c9e"
+    },
+    "vue-router/vue-router.d.ts": {
+      "ref": "4ba57e605bd71bf7248de65aac0b4f50e3eb1c9e"
     }
   }
 }

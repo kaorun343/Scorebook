@@ -1,9 +1,0 @@
-<div>
-  <h1>曲の情報を編集</h1>
-  <form @submit.stop.prevent="submit">
-    <song-form :song="song" v-ref:song></song-form>
-    <parts-form :parts="parts" v-ref:parts></parts-form>
-    <videos-form :videos="videos" v-ref:videos></videos-form>
-    <button type="submit" class="btn btn-primary btn-block">登録</button>
-  </form>
-</div>

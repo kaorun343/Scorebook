@@ -12,7 +12,7 @@ interface Params {
         exist: (value: number) => (value ? 'あり' : 'なし')
     },
     route: {
-        data(transition: VueRouter.Transition<any, any, any, Params, any>) {
+        data(transition: vuerouter.Transition<any, any, any, Params, any>) {
             const { id } = transition.to.params;
             store.actions.showSong(id);
         }
