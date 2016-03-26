@@ -1,6 +1,6 @@
 // Karma configuration
 // Generated on Tue Oct 06 2015 06:05:03 GMT+0900 (JST)
-var webpack = require('webpack')
+var webpackConfig = require('./webpack.config')
 
 module.exports = function(config) {
   config.set({
@@ -41,19 +41,9 @@ module.exports = function(config) {
     ],
 
     webpack: {
-      resolve: {
-        extensions: ['', '.webpack.js', '.web.js', '.ts', '.tsx', '.js']
-      },
-      module: {
-        loaders: [
-          { test: /\.ts$/, loader: "ts-loader" },
-        ]
-      },
-      plugins: [
-        new webpack.ProvidePlugin({
-          StoneSkin: 'stone-skin'
-        })
-      ]
+      resolve: webpackConfig.resolve,
+      module: webpackConfig.module,
+      sassLoader: webpackConfig.sassLoader
     },
 
 

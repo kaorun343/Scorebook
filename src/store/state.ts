@@ -121,7 +121,7 @@ export class Song {
     }
 }
 
-export class State {
+export default class State {
     /**
      * 検索結果を格納する
      */

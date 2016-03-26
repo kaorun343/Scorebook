@@ -1,31 +1,30 @@
 'use strict';
 import Component from 'vue-class-component';
 import Cell from './cell';
-import store from '../../store/store';
-import { Types } from '../../store/mutations';
+import {Store} from 'vuex';
+import State, {Song} from '../../store/state';
+import {addSongs} from '../../store/actions';
+import {mutationTypes} from '../../store/mutations';
 
 @Component({
     template: require('./songs.html'),
-    components: { Cell: Cell }
+    components: { Cell },
+    vuex: {
+        getters: {
+            modal: (state: State) => state.modals.songs,
+            loading: (state: State) => state.loading,
+            songs: (state: State) => state.songs
+        },
+        actions: {
+            addSongs,
+            close(store: Store<State>) {
+                store.dispatch(mutationTypes.CLOSE_MODAL_SONGS);
+            }
+        }
+    }
 })
 export default class Songs {
-    get modal() {
-        return store.state.modals.songs;
-    }
-
-    get loading() {
-        return store.state.loading;
-    }
-
-    get songs() {
-        return store.state.songs;
-    }
-
-    load() {
-        store.actions.addSongs();
-    }
-
-    close() {
-      store.dispatch(Types.CLOSE_MODAL_SONGS);
-    }
+    modal: boolean;
+    loading: boolean;
+    songs: Song[];
 }

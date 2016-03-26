@@ -1,13 +1,11 @@
 'use strict';
 import Vue = require('vue');
-import Vuex from 'vuex';
-import {Actions, actions} from './actions';
-import {mutations} from './mutations';
-import {State} from './state';
-Vue.use(Vuex);
+import {install, Store} from 'vuex';
+import mutations from './mutations';
+import State from './state';
+Vue.use(install);
 
-export default new Vuex.Store({
+export default new Store<State>({
     state: new State(),
-    mutations,
-    actions: actions as any as Actions
+    mutations
 });

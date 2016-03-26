@@ -1,6 +1,7 @@
 'use strict';
 import Component from 'vue-class-component';
-import store from '../../store/store';
+import State, {Song as SongData} from '../../store/state';
+import {showSong} from '../../store/actions';
 
 interface Params {
     id: string;
@@ -12,14 +13,20 @@ interface Params {
         exist: (value: number) => (value ? 'あり' : 'なし')
     },
     route: {
-        data(transition: vuerouter.Transition<any, any, any, Params, any>) {
+        data(transition: vuejs.Transition<any, any, any, Params, any>) {
             const { id } = transition.to.params;
-            store.actions.showSong(id);
+            this.showSong(id);
+        }
+    },
+    vuex: {
+        getters: {
+            song: (state: State) => state.song
+        },
+        actions: {
+            showSong
         }
     }
 })
 export default class Song {
-    get song() {
-        return store.state.song;
-    }
+    song: SongData;
 }

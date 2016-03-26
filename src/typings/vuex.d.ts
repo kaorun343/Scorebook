@@ -1,15 +1,19 @@
 declare module 'vuex' {
-    export class Store<S, A> {
-        constructor(obj: {state?: S, mutations?: any, actions?: A});
+
+    export interface ConstructorOption {
+        state?: any;
+        mutations?: any;
+        middlewares?: { snapshot: boolean, onInit: Function, onMutation: Function }[];
+        strict?: boolean;
+        modules?: any;
+    }
+
+    export class Store<S> {
+        constructor(obj: ConstructorOption);
         state: S;
-        dispatch(...args: any[]): void;
-        actions: A;
+        dispatch(mutationName: any, ...args: any[]): void;
+        watch(pathOrGetter: (string | Function), cb: Function, options: any): void;
     }
 
     export function install(...args: any[]): any;
-
-    export default {
-        Store,
-        install
-    }
 }

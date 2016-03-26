@@ -1,5 +1,4 @@
-var webpack = require('webpack')
-require('dotenv').load()
+'use strict'
 
 module.exports = {
   entry: "./src/index.ts",
@@ -43,15 +42,6 @@ module.exports = {
       }
     ]
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      APPLICATION_ID: `"${process.env.APPLICATION_ID}"`,
-      JAVASCRIPT_KEY: `"${process.env.JAVASCRIPT_KEY}"`,
-      'process.env': {
-        NODE_ENV: `"${process.env.NODE_ENV === 'production' ? 'production': 'development'}"`
-      }
-    })
-  ],
   sassLoader: {
     includePaths: ["./node_modules/foundation-sites/scss"]
   }

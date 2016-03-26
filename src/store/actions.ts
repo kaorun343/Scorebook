@@ -1,13 +1,7 @@
 'use strict';
 import {Store} from 'vuex';
-import {State, Song} from './state';
-import {Types} from './mutations';
-
-export interface Actions {
-    search(text: string): void;
-    addSongs(): void;
-    showSong(id: string): void;
-}
+import State, {Song} from './state';
+import {mutationTypes} from './mutations';
 
 const songs = () => ([
     {
@@ -39,38 +33,37 @@ const songs = () => ([
     }
 ]);
 
-export namespace actions {
-    export function addSongs(store: Store<State, Actions>) {
-        if (store.state.loading) {
-            return;
-        }
-        store.dispatch(Types.START_LOADING_SONGS);
-        setTimeout(function() {
-            store.dispatch(Types.ADD_SONGS, songs());
-            store.dispatch(Types.FINISH_LOADING_SONGS);
-        }, 500);
-    }
 
-    export function search(store: Store<State, Actions>, text: string) {
-        store.dispatch(Types.OPEN_MODAL_SONGS);
-        if (text === store.state.searchtext) {
-            return;
-        }
-        store.dispatch(Types.SET_SEARCHTEXT, text);
-        store.dispatch(Types.START_SEARCHING_SONGS);
-        setTimeout(function() {
-            store.dispatch(Types.SET_SONGS, songs());
-            store.dispatch(Types.FINISH_SEARCHING_SONGS);
-        }, 1000);
+export function addSongs(store: Store<State>) {
+    if (store.state.loading) {
+        return;
     }
+    store.dispatch(mutationTypes.START_ADDING_SONGS);
+    setTimeout(function() {
+        store.dispatch(mutationTypes.ADD_SONGS, songs());
+        store.dispatch(mutationTypes.FINISH_ADDING_SONGS);
+    }, 500);
+}
 
-    export function showSong(store: Store<State, Actions>, id: string) {
-        setTimeout(function() {
-            const song = new Song();
-            song.title = 'ワーク・ソング';
-            song.artist = 'ナット・アダレイ';
-            song.grade = '5~4級';
-            store.dispatch(Types.SET_A_SONG, song);
-        }, 500);
+export function search(store: Store<State>, text: string) {
+    store.dispatch(mutationTypes.OPEN_MODAL_SONGS);
+    if (text === store.state.searchtext) {
+        return;
     }
+    store.dispatch(mutationTypes.SET_SEARCHTEXT, text);
+    store.dispatch(mutationTypes.START_SEARCHING_SONGS);
+    setTimeout(function() {
+        store.dispatch(mutationTypes.SET_SONGS, songs());
+        store.dispatch(mutationTypes.FINISH_SEARCHING_SONGS);
+    }, 1000);
+}
+
+export function showSong(store: Store<State>, id: string) {
+    setTimeout(function() {
+        const song = new Song();
+        song.title = 'ワーク・ソング';
+        song.artist = 'ナット・アダレイ';
+        song.grade = '5~4級';
+        store.dispatch(mutationTypes.SET_A_SONG, song);
+    }, 500);
 }

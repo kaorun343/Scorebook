@@ -6,7 +6,7 @@
   <div class="songs__inner">
     <cell v-for="song in songs" :song="song" @click="close"></cell>
     <div class="button-wrapper">
-      <button type="button" class="button expanded brand" :disabled="loading" @click="load">
+      <button type="button" class="button expanded brand" :disabled="loading" @click="addSongs">
         さらに読み込む
       </button>
     </div>

@@ -1,11 +1,12 @@
 'use strict';
 import Component from 'vue-class-component';
-import Songs from './components/songs/songs';
-import store from './store/store';
+import Songs from '../songs/songs';
+import store from '../../store/store';
 
 @Component({
     template: require('./app.html'),
-    components: { Songs: Songs }
+    components: { Songs: Songs },
+    store
 })
 export default class App {
     text: string;
