@@ -14,11 +14,11 @@ module.exports = {
       { test: /\.html$/, loader: "html-loader?minimize=false" },
       {
         test: /\.css$/,
-        loader: 'style!css?sourceMap'
+        loader: 'style!css'
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loaders: ["style", "css", "sass"]
       },
       {
         test: /\.woff(\?v=\d+\.\d+\.\d+)?$/,

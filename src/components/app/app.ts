@@ -2,10 +2,11 @@
 import Component from 'vue-class-component';
 import Songs from '../songs/songs';
 import store from '../../store/store';
+import {search} from '../../store/actions';
 
 @Component({
     template: require('./app.html'),
-    components: { Songs: Songs },
+    components: { Songs },
     store
 })
 export default class App {
@@ -19,7 +20,7 @@ export default class App {
 
     search() {
         if (this.text.length) {
-            store.actions.search(this.text);
+            search(store, this.text);
         }
     }
 }
